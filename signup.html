@@ -164,7 +164,21 @@ async function signUp() {
   const minSpinnerTime = new Promise(resolve => setTimeout(resolve, 2000));
 
   const signupWork = (async () => {
-    await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    // FIX: setPersistence(LOCAL) throws "auth/unsupported-persistence-type"
+    // in environments where localStorage is blocked or unavailable
+    // (sandboxed preview iframes, some in-app/webview browsers, certain
+    // privacy modes). We try LOCAL first, then fall back step by step so
+    // sign up still works even when storage access is restricted.
+    try {
+      await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+    } catch (persistErr) {
+      try {
+        await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+      } catch (sessionErr) {
+        await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+      }
+    }
+
     const userCredential = await firebase.auth().createUserWithEmailAndPassword(email, password);
     const user = userCredential.user;
     const accountId = await getNextAccountId();
