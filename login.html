@@ -49,6 +49,22 @@ document.querySelectorAll('.box input').forEach(input => {
   });
 });
 
+// FIX: setPersistence(LOCAL) throws "auth/unsupported-persistence-type"
+// in environments where localStorage is blocked or unavailable (sandboxed
+// preview iframes, some in-app/webview browsers, certain privacy modes).
+// Try LOCAL first, then fall back step by step so Log In still works.
+async function setBestAvailablePersistence() {
+  try {
+    await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL);
+  } catch (persistErr) {
+    try {
+      await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
+    } catch (sessionErr) {
+      await firebase.auth().setPersistence(firebase.auth.Auth.Persistence.NONE);
+    }
+  }
+}
+
 function logIn() {
   const identifier = document.getElementById('phone').value.trim();
   const password = document.getElementById('password').value;
@@ -60,7 +76,7 @@ function logIn() {
   }
   const email = identifier.includes('@') ? identifier : identifier.replace(/\D/g,'') + '@abccompany-users.com';
 
-  firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+  setBestAvailablePersistence()
     .then(() => firebase.auth().signInWithEmailAndPassword(email, password))
     .then((cred) => {
       const destination = (cred.user.email || '').toLowerCase() === ADMIN_EMAIL.toLowerCase()
