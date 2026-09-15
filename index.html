@@ -286,7 +286,7 @@ setInterval(() => {
   track.innerHTML += track.innerHTML;
 })();
 
-// ★★★ CoinLore API — বিশ্বব্যাপী কাজ করে, API Key লাগে না ★★★
+// ★★★ CoinLore API-এর জন্য কয়েন লিস্ট ★★★
 const coinList = [
   { symbol: 'BTC', name: 'Bitcoin' },
   { symbol: 'ETH', name: 'Ethereum' },
@@ -389,6 +389,10 @@ const coinList = [
   { symbol: 'PEPE', name: 'Pepe' }
 ];
 
+// ★★★ ডেটা ক্যাশে (সিমুলেশনের জন্য) ★★★
+let cryptoDataCache = [];
+
+// ★★★ আসল ডেটা লোড (প্রতি ৩০ সেকেন্ডে) ★★★
 async function loadCrypto() {
   const listEl = document.getElementById('crypto-list');
   try {
@@ -396,45 +400,84 @@ async function loadCrypto() {
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const json = await res.json();
     const data = json.data;
-    listEl.innerHTML = '';
 
-    coinList.forEach(coinInfo => {
+    cryptoDataCache = coinList.map(coinInfo => {
       const item = data.find(d => d.symbol === coinInfo.symbol);
-      if (!item) return;
+      if (!item) return null;
+      return {
+        symbol: coinInfo.symbol,
+        name: coinInfo.name,
+        price: parseFloat(item.price_usd),
+        basePrice: parseFloat(item.price_usd),
+        changePercent: parseFloat(item.percent_change_24h),
+        baseChangePercent: parseFloat(item.percent_change_24h)
+      };
+    }).filter(Boolean);
 
-      const price = parseFloat(item.price_usd);
-      const changePercent = parseFloat(item.percent_change_24h);
-      const changeUp = changePercent >= 0;
-      const changeClass = changeUp ? 'crypto-change-up' : 'crypto-change-down';
-      const changeSign = changeUp ? '+' : '';
-      const iconUrl = 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/' + coinInfo.symbol.toLowerCase() + '.png';
-
-      const card = document.createElement('div');
-      card.className = 'crypto-card';
-      card.innerHTML = `
-        <div class="crypto-left">
-          <img src="${iconUrl}" alt="${coinInfo.name}" onerror="this.style.visibility='hidden'">
-          <div>
-            <div class="crypto-name">${coinInfo.symbol} <span class="crypto-symbol">${coinInfo.name}</span></div>
-          </div>
-        </div>
-        <div class="crypto-right" style="display:flex; gap:24px; align-items:center;">
-          <div class="crypto-price">$${price.toLocaleString(undefined, {maximumFractionDigits: 4})}</div>
-          <div class="${changeClass}">${changeSign}${changePercent.toFixed(2)}%</div>
-        </div>`;
-      listEl.appendChild(card);
-    });
-
-    if (listEl.innerHTML === '') {
-      listEl.innerHTML = '<p style="text-align:center;color:#848e9c;">No data available right now. Please refresh.</p>';
-    }
+    renderCryptoList();
   } catch (err) {
     console.error(err);
-    listEl.innerHTML = '<p style="text-align:center;color:#f6465d;">Could not load prices right now. Please refresh the page in a moment.</p>';
+    if (cryptoDataCache.length === 0) {
+      listEl.innerHTML = '<p style="text-align:center;color:#f6465d;">Could not load prices right now. Please refresh the page in a moment.</p>';
+    }
   }
 }
+
+// ★★★ লিস্ট রেন্ডার ★★★
+function renderCryptoList() {
+  const listEl = document.getElementById('crypto-list');
+  listEl.innerHTML = '';
+
+  cryptoDataCache.forEach(coinInfo => {
+    const changeUp = coinInfo.changePercent >= 0;
+    const changeClass = changeUp ? 'crypto-change-up' : 'crypto-change-down';
+    const changeSign = changeUp ? '+' : '';
+    const iconUrl = 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/' + coinInfo.symbol.toLowerCase() + '.png';
+
+    const card = document.createElement('div');
+    card.className = 'crypto-card';
+    card.dataset.symbol = coinInfo.symbol;
+    card.innerHTML = `
+      <div class="crypto-left">
+        <img src="${iconUrl}" alt="${coinInfo.name}" onerror="this.style.visibility='hidden'">
+        <div>
+          <div class="crypto-name">${coinInfo.symbol} <span class="crypto-symbol">${coinInfo.name}</span></div>
+        </div>
+      </div>
+      <div class="crypto-right" style="display:flex; gap:24px; align-items:center;">
+        <div class="crypto-price">$${coinInfo.price.toLocaleString(undefined, {maximumFractionDigits: 4})}</div>
+        <div class="${changeClass}">${changeSign}${coinInfo.changePercent.toFixed(2)}%</div>
+      </div>`;
+    listEl.appendChild(card);
+  });
+}
+
+// ★★★ প্রতি ৩ সেকেন্ডে সিমুলেটেড দাম পরিবর্তন ★★★
+function simulateLiveUpdate() {
+  if (cryptoDataCache.length === 0) return;
+  cryptoDataCache.forEach(coin => {
+    const randomFactor = (Math.random() - 0.5) * 0.001;
+    coin.price = coin.basePrice * (1 + randomFactor);
+    coin.changePercent = coin.baseChangePercent + (randomFactor * 100);
+
+    const card = document.querySelector(`.crypto-card[data-symbol="${coin.symbol}"]`);
+    if (card) {
+      const priceEl = card.querySelector('.crypto-price');
+      const changeEl = card.querySelector('.crypto-change-up, .crypto-change-down');
+      if (priceEl) priceEl.textContent = '$' + coin.price.toLocaleString(undefined, {maximumFractionDigits: 4});
+      if (changeEl) {
+        const up = coin.changePercent >= 0;
+        changeEl.className = up ? 'crypto-change-up' : 'crypto-change-down';
+        changeEl.textContent = (up ? '+' : '') + coin.changePercent.toFixed(2) + '%';
+      }
+    }
+  });
+}
+
+// ★★★ শুরু করা ★★★
 loadCrypto();
-setInterval(loadCrypto, 30000); // প্রতি ৩০ সেকেন্ডে রিফ্রেশ
+setInterval(loadCrypto, 30000);       // আসল ডেটা প্রতি ৩০ সেকেন্ডে
+setInterval(simulateLiveUpdate, 3000); // সিমুলেটেড আপডেট প্রতি ৩ সেকেন্ডে
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
