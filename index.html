@@ -66,7 +66,6 @@
             display:flex; align-items:center; justify-content:center; font-size:18px;
         }
 
-        /* ===== Achievement ticker (scrolls right -> left, Binance-style) ===== */
         .ticker-wrap {
             max-width: 900px;
             margin: 0 0 10px;
@@ -271,7 +270,6 @@
         <button onclick="window.location.href='signup.html'">Sign Up</button>
     </div>
 
-    <!-- ===== Scrolling achievement ticker (right -> left, loops forever) ===== -->
     <div class="ticker-wrap">
         <div class="ticker-track" id="ticker-track">
             <div class="ticker-item"><span class="ticker-icon">&#9733;</span>Recognized as <b>Forbes' Most Trusted Crypto Exchange 2025</b></div>
@@ -281,7 +279,6 @@
         </div>
     </div>
 
-    <!-- ===== Scrolling logos ticker: popular stocks + exchanges (right -> left) ===== -->
     <div class="ticker-wrap">
         <div class="ticker-track ticker-track-slow" id="ticker-track-2">
             <div class="ticker-item"><span class="ticker-icon round" style="background:#555;">AAPL</span>Apple</div>
@@ -404,8 +401,6 @@ setInterval(() => {
   customerCountEl.textContent = customerCount.toLocaleString('en-US');
 }, 3000);
 
-// Duplicate the ticker items once so the right-to-left loop is seamless
-// (the track scrolls exactly 50% of its total width, which is one full set).
 (function duplicateTicker() {
   const track = document.getElementById('ticker-track');
   track.innerHTML += track.innerHTML;
@@ -415,172 +410,50 @@ setInterval(() => {
   track.innerHTML += track.innerHTML;
 })();
 
+// ★★★ CoinCap API এর জন্য কয়েন লিস্ট (id ফিল্ড) ★★★
 const coinList = [
-  { symbol: 'BTCUSDT', name: 'Bitcoin', short: 'BTC', icon: 'btc' },
-  { symbol: 'ETHUSDT', name: 'Ethereum', short: 'ETH', icon: 'eth' },
-  { symbol: 'BNBUSDT', name: 'BNB', short: 'BNB', icon: 'bnb' },
-  { symbol: 'SOLUSDT', name: 'Solana', short: 'SOL', icon: 'sol' },
-  { symbol: 'XRPUSDT', name: 'XRP', short: 'XRP', icon: 'xrp' },
-  { symbol: 'ADAUSDT', name: 'Cardano', short: 'ADA', icon: 'ada' },
-  { symbol: 'DOGEUSDT', name: 'Dogecoin', short: 'DOGE', icon: 'doge' },
-  { symbol: 'TRXUSDT', name: 'TRON', short: 'TRX', icon: 'trx' },
-  { symbol: 'TONUSDT', name: 'Toncoin', short: 'TON', icon: 'ton' },
-  { symbol: 'DOTUSDT', name: 'Polkadot', short: 'DOT', icon: 'dot' },
-  { symbol: 'MATICUSDT', name: 'Polygon', short: 'MATIC', icon: 'matic' },
-  { symbol: 'LTCUSDT', name: 'Litecoin', short: 'LTC', icon: 'ltc' },
-  { symbol: 'SHIBUSDT', name: 'Shiba Inu', short: 'SHIB', icon: 'shib' },
-  { symbol: 'AVAXUSDT', name: 'Avalanche', short: 'AVAX', icon: 'avax' },
-  { symbol: 'LINKUSDT', name: 'Chainlink', short: 'LINK', icon: 'link' },
-  { symbol: 'BCHUSDT', name: 'Bitcoin Cash', short: 'BCH', icon: 'bch' },
-  { symbol: 'ATOMUSDT', name: 'Cosmos', short: 'ATOM', icon: 'atom' },
-  { symbol: 'XLMUSDT', name: 'Stellar', short: 'XLM', icon: 'xlm' },
-  { symbol: 'UNIUSDT', name: 'Uniswap', short: 'UNI', icon: 'uni' },
-  { symbol: 'ETCUSDT', name: 'Ethereum Classic', short: 'ETC', icon: 'etc' },
-  { symbol: 'FILUSDT', name: 'Filecoin', short: 'FIL', icon: 'fil' },
-  { symbol: 'APTUSDT', name: 'Aptos', short: 'APT', icon: 'apt' },
-  { symbol: 'ARBUSDT', name: 'Arbitrum', short: 'ARB', icon: 'arb' },
-  { symbol: 'OPUSDT', name: 'Optimism', short: 'OP', icon: 'op' },
-  { symbol: 'NEARUSDT', name: 'NEAR Protocol', short: 'NEAR', icon: 'near' },
-  { symbol: 'VETUSDT', name: 'VeChain', short: 'VET', icon: 'vet' },
-  { symbol: 'HBARUSDT', name: 'Hedera', short: 'HBAR', icon: 'hbar' },
-  { symbol: 'ICPUSDT', name: 'Internet Computer', short: 'ICP', icon: 'icp' },
-  { symbol: 'ALGOUSDT', name: 'Algorand', short: 'ALGO', icon: 'algo' },
-  { symbol: 'AAVEUSDT', name: 'Aave', short: 'AAVE', icon: 'aave' },
-  { symbol: 'MKRUSDT', name: 'Maker', short: 'MKR', icon: 'mkr' },
-  { symbol: 'GRTUSDT', name: 'The Graph', short: 'GRT', icon: 'grt' },
-  { symbol: 'SANDUSDT', name: 'The Sandbox', short: 'SAND', icon: 'sand' },
-  { symbol: 'MANAUSDT', name: 'Decentraland', short: 'MANA', icon: 'mana' },
-  { symbol: 'AXSUSDT', name: 'Axie Infinity', short: 'AXS', icon: 'axs' },
-  { symbol: 'EOSUSDT', name: 'EOS', short: 'EOS', icon: 'eos' },
-  { symbol: 'FTMUSDT', name: 'Fantom', short: 'FTM', icon: 'ftm' },
-  { symbol: 'THETAUSDT', name: 'Theta Network', short: 'THETA', icon: 'theta' },
-  { symbol: 'XTZUSDT', name: 'Tezos', short: 'XTZ', icon: 'xtz' },
-  { symbol: 'EGLDUSDT', name: 'MultiversX', short: 'EGLD', icon: 'egld' },
-  { symbol: 'KAVAUSDT', name: 'Kava', short: 'KAVA', icon: 'kava' },
-  { symbol: 'RUNEUSDT', name: 'THORChain', short: 'RUNE', icon: 'rune' },
-  { symbol: 'CHZUSDT', name: 'Chiliz', short: 'CHZ', icon: 'chz' },
-  { symbol: 'ENJUSDT', name: 'Enjin Coin', short: 'ENJ', icon: 'enj' },
-  { symbol: 'ZECUSDT', name: 'Zcash', short: 'ZEC', icon: 'zec' },
-  { symbol: 'DASHUSDT', name: 'Dash', short: 'DASH', icon: 'dash' },
-  { symbol: 'COMPUSDT', name: 'Compound', short: 'COMP', icon: 'comp' },
-  { symbol: 'SNXUSDT', name: 'Synthetix', short: 'SNX', icon: 'snx' },
-  { symbol: 'CRVUSDT', name: 'Curve DAO', short: 'CRV', icon: 'crv' },
-  { symbol: 'YFIUSDT', name: 'yearn.finance', short: 'YFI', icon: 'yfi' },
-  { symbol: '1INCHUSDT', name: '1inch', short: '1INCH', icon: '1inch' },
-  { symbol: 'BATUSDT', name: 'Basic Attention Token', short: 'BAT', icon: 'bat' },
-  { symbol: 'ZILUSDT', name: 'Zilliqa', short: 'ZIL', icon: 'zil' },
-  { symbol: 'IOTAUSDT', name: 'IOTA', short: 'IOTA', icon: 'iota' },
-  { symbol: 'NEOUSDT', name: 'NEO', short: 'NEO', icon: 'neo' },
-  { symbol: 'QTUMUSDT', name: 'Qtum', short: 'QTUM', icon: 'qtum' },
-  { symbol: 'WAVESUSDT', name: 'Waves', short: 'WAVES', icon: 'waves' },
-  { symbol: 'KSMUSDT', name: 'Kusama', short: 'KSM', icon: 'ksm' },
-  { symbol: 'OMGUSDT', name: 'OMG Network', short: 'OMG', icon: 'omg' },
-  { symbol: 'ONTUSDT', name: 'Ontology', short: 'ONT', icon: 'ont' },
-  { symbol: 'ICXUSDT', name: 'ICON', short: 'ICX', icon: 'icx' },
-  { symbol: 'ZRXUSDT', name: '0x Protocol', short: 'ZRX', icon: 'zrx' },
-  { symbol: 'RENUSDT', name: 'Ren', short: 'REN', icon: 'ren' },
-  { symbol: 'STORJUSDT', name: 'Storj', short: 'STORJ', icon: 'storj' },
-  { symbol: 'ANKRUSDT', name: 'Ankr', short: 'ANKR', icon: 'ankr' },
-  { symbol: 'CELRUSDT', name: 'Celer Network', short: 'CELR', icon: 'celr' },
-  { symbol: 'CTSIUSDT', name: 'Cartesi', short: 'CTSI', icon: 'ctsi' },
-  { symbol: 'SKLUSDT', name: 'SKALE', short: 'SKL', icon: 'skl' },
-  { symbol: 'SUSHIUSDT', name: 'SushiSwap', short: 'SUSHI', icon: 'sushi' },
-  { symbol: 'LRCUSDT', name: 'Loopring', short: 'LRC', icon: 'lrc' },
-  { symbol: 'KNCUSDT', name: 'Kyber Network', short: 'KNC', icon: 'knc' },
-  { symbol: 'BANDUSDT', name: 'Band Protocol', short: 'BAND', icon: 'band' },
-  { symbol: 'RSRUSDT', name: 'Reserve Rights', short: 'RSR', icon: 'rsr' },
-  { symbol: 'OCEANUSDT', name: 'Ocean Protocol', short: 'OCEAN', icon: 'ocean' },
-  { symbol: 'CVCUSDT', name: 'Civic', short: 'CVC', icon: 'cvc' },
-  { symbol: 'DGBUSDT', name: 'DigiByte', short: 'DGB', icon: 'dgb' },
-  { symbol: 'SCUSDT', name: 'Siacoin', short: 'SC', icon: 'sc' },
-  { symbol: 'RVNUSDT', name: 'Ravencoin', short: 'RVN', icon: 'rvn' },
-  { symbol: 'BTTCUSDT', name: 'BitTorrent', short: 'BTT', icon: 'btt' },
-  { symbol: 'WINUSDT', name: 'WINkLink', short: 'WIN', icon: 'win' },
-  { symbol: 'HOTUSDT', name: 'Holo', short: 'HOT', icon: 'hot' },
-  { symbol: 'STMXUSDT', name: 'StormX', short: 'STMX', icon: 'stmx' },
-  { symbol: 'DENTUSDT', name: 'Dent', short: 'DENT', icon: 'dent' },
-  { symbol: 'VTHOUSDT', name: 'VeThor Token', short: 'VTHO', icon: 'vtho' },
-  { symbol: 'IOSTUSDT', name: 'IOST', short: 'IOST', icon: 'iost' },
-  { symbol: 'ONEUSDT', name: 'Harmony', short: 'ONE', icon: 'one' },
-  { symbol: 'HIVEUSDT', name: 'Hive', short: 'HIVE', icon: 'hive' },
-  { symbol: 'STEEMUSDT', name: 'Steem', short: 'STEEM', icon: 'steem' },
-  { symbol: 'WAXPUSDT', name: 'WAX', short: 'WAXP', icon: 'waxp' },
-  { symbol: 'FLOWUSDT', name: 'Flow', short: 'FLOW', icon: 'flow' },
-  { symbol: 'KLAYUSDT', name: 'Klaytn', short: 'KLAY', icon: 'klay' },
-  { symbol: 'MINAUSDT', name: 'Mina Protocol', short: 'MINA', icon: 'mina' },
-  { symbol: 'ROSEUSDT', name: 'Oasis Network', short: 'ROSE', icon: 'rose' },
-  { symbol: 'GALAUSDT', name: 'Gala', short: 'GALA', icon: 'gala' },
-  { symbol: 'IMXUSDT', name: 'Immutable X', short: 'IMX', icon: 'imx' },
-  { symbol: 'LDOUSDT', name: 'Lido DAO', short: 'LDO', icon: 'ldo' },
-  { symbol: 'INJUSDT', name: 'Injective', short: 'INJ', icon: 'inj' },
-  { symbol: 'SEIUSDT', name: 'Sei', short: 'SEI', icon: 'sei' },
-  { symbol: 'SUIUSDT', name: 'Sui', short: 'SUI', icon: 'sui' },
-  { symbol: 'PEPEUSDT', name: 'Pepe', short: 'PEPE', icon: 'pepe' }
-];
-
-async function loadCrypto() {
-  const listEl = document.getElementById('crypto-list');
-  try {
-    const res = await fetch('https://api.binance.com/api/v3/ticker/24hr');
-    if (!res.ok) {
-      throw new Error('API status ' + res.status);
-    }
-    const data = await res.json();
-    listEl.innerHTML = '';
-
-    coinList.forEach(coinInfo => {
-      const ticker = data.find(d => d.symbol === coinInfo.symbol);
-      if (!ticker) return;
-
-      const changePercent = parseFloat(ticker.priceChangePercent);
-      const changeUp = changePercent >= 0;
-      const changeClass = changeUp ? 'crypto-change-up' : 'crypto-change-down';
-      const changeSign = changeUp ? '+' : '';
-      const price = parseFloat(ticker.lastPrice);
-      const iconUrl = 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/' + coinInfo.icon + '.png';
-
-      const card = document.createElement('div');
-      card.className = 'crypto-card';
-      card.innerHTML = `
-        <div class="crypto-left">
-          <img src="${iconUrl}" alt="${coinInfo.name}" onerror="this.style.visibility='hidden'">
-          <div>
-            <div class="crypto-name">${coinInfo.short} <span class="crypto-symbol">${coinInfo.name}</span></div>
-          </div>
-        </div>
-        <div class="crypto-right" style="display:flex; gap:24px; align-items:center;">
-          <div class="crypto-price">$${price.toLocaleString(undefined, {maximumFractionDigits: 4})}</div>
-          <div class="${changeClass}">${changeSign}${changePercent.toFixed(2)}%</div>
-        </div>`;
-      listEl.appendChild(card);
-    });
-  } catch (err) {
-    listEl.innerHTML = '<p style="text-align:center;color:#f6465d;">Could not load prices right now. Please refresh the page in a moment.</p>';
-  }
-}
-loadCrypto();
-setInterval(loadCrypto, 3000);
-</script>
-
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script>
-const firebaseConfig = {
-  apiKey: "AIzaSyDJoPr8RvE1xkNTKRr5kwTx6E51GCMn_HE",
-  authDomain: "abc-company-6272a.firebaseapp.com",
-  projectId: "abc-company-6272a",
-  storageBucket: "abc-company-6272a.firebasestorage.app",
-  messagingSenderId: "1026212780106",
-  appId: "1:1026212780106:web:985ec1bc35837d6320eeb3"
-};
-firebase.initializeApp(firebaseConfig);
-
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    window.location.href = 'market.html';
-  }
-});
-</script>
-
-</body>
-</html>
+  { id: 'bitcoin', name: 'Bitcoin', short: 'BTC', icon: 'btc' },
+  { id: 'ethereum', name: 'Ethereum', short: 'ETH', icon: 'eth' },
+  { id: 'binance-coin', name: 'BNB', short: 'BNB', icon: 'bnb' },
+  { id: 'solana', name: 'Solana', short: 'SOL', icon: 'sol' },
+  { id: 'xrp', name: 'XRP', short: 'XRP', icon: 'xrp' },
+  { id: 'cardano', name: 'Cardano', short: 'ADA', icon: 'ada' },
+  { id: 'dogecoin', name: 'Dogecoin', short: 'DOGE', icon: 'doge' },
+  { id: 'tron', name: 'TRON', short: 'TRX', icon: 'trx' },
+  { id: 'toncoin', name: 'Toncoin', short: 'TON', icon: 'ton' },
+  { id: 'polkadot', name: 'Polkadot', short: 'DOT', icon: 'dot' },
+  { id: 'polygon', name: 'Polygon', short: 'MATIC', icon: 'matic' },
+  { id: 'litecoin', name: 'Litecoin', short: 'LTC', icon: 'ltc' },
+  { id: 'shiba-inu', name: 'Shiba Inu', short: 'SHIB', icon: 'shib' },
+  { id: 'avalanche', name: 'Avalanche', short: 'AVAX', icon: 'avax' },
+  { id: 'chainlink', name: 'Chainlink', short: 'LINK', icon: 'link' },
+  { id: 'bitcoin-cash', name: 'Bitcoin Cash', short: 'BCH', icon: 'bch' },
+  { id: 'cosmos', name: 'Cosmos', short: 'ATOM', icon: 'atom' },
+  { id: 'stellar', name: 'Stellar', short: 'XLM', icon: 'xlm' },
+  { id: 'uniswap', name: 'Uniswap', short: 'UNI', icon: 'uni' },
+  { id: 'ethereum-classic', name: 'Ethereum Classic', short: 'ETC', icon: 'etc' },
+  { id: 'filecoin', name: 'Filecoin', short: 'FIL', icon: 'fil' },
+  { id: 'aptos', name: 'Aptos', short: 'APT', icon: 'apt' },
+  { id: 'arbitrum', name: 'Arbitrum', short: 'ARB', icon: 'arb' },
+  { id: 'optimism', name: 'Optimism', short: 'OP', icon: 'op' },
+  { id: 'near-protocol', name: 'NEAR Protocol', short: 'NEAR', icon: 'near' },
+  { id: 'vechain', name: 'VeChain', short: 'VET', icon: 'vet' },
+  { id: 'hedera-hashgraph', name: 'Hedera', short: 'HBAR', icon: 'hbar' },
+  { id: 'internet-computer', name: 'Internet Computer', short: 'ICP', icon: 'icp' },
+  { id: 'algorand', name: 'Algorand', short: 'ALGO', icon: 'algo' },
+  { id: 'aave', name: 'Aave', short: 'AAVE', icon: 'aave' },
+  { id: 'maker', name: 'Maker', short: 'MKR', icon: 'mkr' },
+  { id: 'the-graph', name: 'The Graph', short: 'GRT', icon: 'grt' },
+  { id: 'the-sandbox', name: 'The Sandbox', short: 'SAND', icon: 'sand' },
+  { id: 'decentraland', name: 'Decentraland', short: 'MANA', icon: 'mana' },
+  { id: 'axie-infinity', name: 'Axie Infinity', short: 'AXS', icon: 'axs' },
+  { id: 'eos', name: 'EOS', short: 'EOS', icon: 'eos' },
+  { id: 'fantom', name: 'Fantom', short: 'FTM', icon: 'ftm' },
+  { id: 'theta-network', name: 'Theta Network', short: 'THETA', icon: 'theta' },
+  { id: 'tezos', name: 'Tezos', short: 'XTZ', icon: 'xtz' },
+  { id: 'multiversx', name: 'MultiversX', short: 'EGLD', icon: 'egld' },
+  { id: 'kava', name: 'Kava', short: 'KAVA', icon: 'kava' },
+  { id: 'thorchain', name: 'THORChain', short: 'RUNE', icon: 'rune' },
+  { id: 'chiliz', name: 'Chiliz', short: 'CHZ', icon: 'chz' },
+  { id: 'enjin-coin', name: 'Enjin Coin', short: 'ENJ', icon: 'enj' },
+  { id:
