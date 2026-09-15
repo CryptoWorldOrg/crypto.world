@@ -208,49 +208,49 @@ supportIcon.addEventListener('click', (e) => {
 supportMenu.addEventListener('click', (e) => e.stopPropagation());
 document.addEventListener('click', () => supportMenu.classList.remove('show'));
 
-// ★★★ CoinCap API এর জন্য কয়েন লিস্ট (id ফিল্ড) ★★★
+// ★★★ CoinGecko API-এর জন্য কয়েন লিস্ট ★★★
 const popularCoins = [
-  { id: 'bitcoin', name: 'Bitcoin', short: 'BTC', icon: 'btc' },
-  { id: 'ethereum', name: 'Ethereum', short: 'ETH', icon: 'eth' },
-  { id: 'binance-coin', name: 'BNB', short: 'BNB', icon: 'bnb' },
-  { id: 'solana', name: 'Solana', short: 'SOL', icon: 'sol' },
-  { id: 'xrp', name: 'XRP', short: 'XRP', icon: 'xrp' },
-  { id: 'cardano', name: 'Cardano', short: 'ADA', icon: 'ada' },
-  { id: 'dogecoin', name: 'Dogecoin', short: 'DOGE', icon: 'doge' },
-  { id: 'tron', name: 'TRON', short: 'TRX', icon: 'trx' },
-  { id: 'toncoin', name: 'Toncoin', short: 'TON', icon: 'ton' },
-  { id: 'polkadot', name: 'Polkadot', short: 'DOT', icon: 'dot' },
-  { id: 'polygon', name: 'Polygon', short: 'MATIC', icon: 'matic' },
-  { id: 'litecoin', name: 'Litecoin', short: 'LTC', icon: 'ltc' },
-  { id: 'shiba-inu', name: 'Shiba Inu', short: 'SHIB', icon: 'shib' },
-  { id: 'avalanche', name: 'Avalanche', short: 'AVAX', icon: 'avax' },
-  { id: 'chainlink', name: 'Chainlink', short: 'LINK', icon: 'link' },
-  { id: 'cosmos', name: 'Cosmos', short: 'ATOM', icon: 'atom' },
-  { id: 'uniswap', name: 'Uniswap', short: 'UNI', icon: 'uni' },
-  { id: 'stellar', name: 'Stellar', short: 'XLM', icon: 'xlm' },
-  { id: 'near-protocol', name: 'NEAR Protocol', short: 'NEAR', icon: 'near' },
-  { id: 'aptos', name: 'Aptos', short: 'APT', icon: 'apt' },
-  { id: 'arbitrum', name: 'Arbitrum', short: 'ARB', icon: 'arb' },
-  { id: 'optimism', name: 'Optimism', short: 'OP', icon: 'op' },
-  { id: 'filecoin', name: 'Filecoin', short: 'FIL', icon: 'fil' },
-  { id: 'internet-computer', name: 'Internet Computer', short: 'ICP', icon: 'icp' },
-  { id: 'bitcoin-cash', name: 'Bitcoin Cash', short: 'BCH', icon: 'bch' },
-  { id: 'algorand', name: 'Algorand', short: 'ALGO', icon: 'algo' },
-  { id: 'vechain', name: 'VeChain', short: 'VET', icon: 'vet' },
-  { id: 'the-sandbox', name: 'The Sandbox', short: 'SAND', icon: 'sand' },
-  { id: 'decentraland', name: 'Decentraland', short: 'MANA', icon: 'mana' },
-  { id: 'hedera-hashgraph', name: 'Hedera', short: 'HBAR', icon: 'hbar' },
-  { id: 'ethereum-classic', name: 'Ethereum Classic', short: 'ETC', icon: 'etc' },
-  { id: 'monero', name: 'Monero', short: 'XMR', icon: 'xmr' },
-  { id: 'eos', name: 'EOS', short: 'EOS', icon: 'eos' },
-  { id: 'aave', name: 'Aave', short: 'AAVE', icon: 'aave' },
-  { id: 'the-graph', name: 'The Graph', short: 'GRT', icon: 'grt' },
-  { id: 'maker', name: 'Maker', short: 'MKR', icon: 'mkr' },
-  { id: 'quant', name: 'Quant', short: 'QNT', icon: 'qnt' },
-  { id: 'fantom', name: 'Fantom', short: 'FTM', icon: 'ftm' },
-  { id: 'theta-network', name: 'Theta Network', short: 'THETA', icon: 'theta' },
-  { id: 'tezos', name: 'Tezos', short: 'XTZ', icon: 'xtz' },
-  { id: 'multiversx', name: 'MultiversX', short: 'EGLD', icon: 'egld' }
+  { id: 'bitcoin', name: 'Bitcoin', short: 'BTC' },
+  { id: 'ethereum', name: 'Ethereum', short: 'ETH' },
+  { id: 'binancecoin', name: 'BNB', short: 'BNB' },
+  { id: 'solana', name: 'Solana', short: 'SOL' },
+  { id: 'ripple', name: 'XRP', short: 'XRP' },
+  { id: 'cardano', name: 'Cardano', short: 'ADA' },
+  { id: 'dogecoin', name: 'Dogecoin', short: 'DOGE' },
+  { id: 'tron', name: 'TRON', short: 'TRX' },
+  { id: 'the-open-network', name: 'Toncoin', short: 'TON' },
+  { id: 'polkadot', name: 'Polkadot', short: 'DOT' },
+  { id: 'matic-network', name: 'Polygon', short: 'MATIC' },
+  { id: 'litecoin', name: 'Litecoin', short: 'LTC' },
+  { id: 'shiba-inu', name: 'Shiba Inu', short: 'SHIB' },
+  { id: 'avalanche-2', name: 'Avalanche', short: 'AVAX' },
+  { id: 'chainlink', name: 'Chainlink', short: 'LINK' },
+  { id: 'cosmos', name: 'Cosmos', short: 'ATOM' },
+  { id: 'uniswap', name: 'Uniswap', short: 'UNI' },
+  { id: 'stellar', name: 'Stellar', short: 'XLM' },
+  { id: 'near', name: 'NEAR Protocol', short: 'NEAR' },
+  { id: 'aptos', name: 'Aptos', short: 'APT' },
+  { id: 'arbitrum', name: 'Arbitrum', short: 'ARB' },
+  { id: 'optimism', name: 'Optimism', short: 'OP' },
+  { id: 'filecoin', name: 'Filecoin', short: 'FIL' },
+  { id: 'internet-computer', name: 'Internet Computer', short: 'ICP' },
+  { id: 'bitcoin-cash', name: 'Bitcoin Cash', short: 'BCH' },
+  { id: 'algorand', name: 'Algorand', short: 'ALGO' },
+  { id: 'vechain', name: 'VeChain', short: 'VET' },
+  { id: 'the-sandbox', name: 'The Sandbox', short: 'SAND' },
+  { id: 'decentraland', name: 'Decentraland', short: 'MANA' },
+  { id: 'hedera-hashgraph', name: 'Hedera', short: 'HBAR' },
+  { id: 'ethereum-classic', name: 'Ethereum Classic', short: 'ETC' },
+  { id: 'monero', name: 'Monero', short: 'XMR' },
+  { id: 'eos', name: 'EOS', short: 'EOS' },
+  { id: 'aave', name: 'Aave', short: 'AAVE' },
+  { id: 'the-graph', name: 'The Graph', short: 'GRT' },
+  { id: 'maker', name: 'Maker', short: 'MKR' },
+  { id: 'quant-network', name: 'Quant', short: 'QNT' },
+  { id: 'fantom', name: 'Fantom', short: 'FTM' },
+  { id: 'theta-token', name: 'Theta Network', short: 'THETA' },
+  { id: 'tezos', name: 'Tezos', short: 'XTZ' },
+  { id: 'elrond-erd-2', name: 'MultiversX', short: 'EGLD' }
 ];
 
 function drawSparkline(canvas, prices, up) {
@@ -269,69 +269,104 @@ function drawSparkline(canvas, prices, up) {
   ctx.stroke();
 }
 
-async function loadMarket() {
+let marketDataCache = [];
+
+function renderMarket() {
   const tbody = document.getElementById('market-body');
   const highlightRow = document.getElementById('highlight-row');
-  try {
-    // CoinCap API থেকে সব asset আনি (একবারে 100+ কয়েন)
-    const res = await fetch('https://api.coincap.io/v2/assets?limit=100');
-    const json = await res.json();
-    const assets = json.data;
+  tbody.innerHTML = '';
+  highlightRow.innerHTML = '';
 
-    tbody.innerHTML = '';
-    highlightRow.innerHTML = '';
+  marketDataCache.forEach(coin => {
+    const up = coin.changePercent >= 0;
+    const iconUrl = coin.image;
 
-    for (const coin of popularCoins) {
-      const asset = assets.find(a => a.id === coin.id);
-      if (!asset) continue;
-
-      const price = parseFloat(asset.priceUsd);
-      const changePercent = parseFloat(asset.changePercent24Hr);
-      const up = changePercent >= 0;
-      const iconUrl = 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/' + coin.icon + '.png';
-
-      if (['bitcoin','ethereum','xrp'].includes(coin.id)) {
-        const hCard = document.createElement('div');
-        hCard.className = 'highlight-card';
-        hCard.innerHTML = `<div class="name">${coin.short}/USDT</div><div class="price ${up?'change-up':'change-down'}">$${price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>`;
-        highlightRow.appendChild(hCard);
-      }
-
-      const row = document.createElement('tr');
-      row.innerHTML = `
-        <td>
-          <div class="coin-name">
-            <img src="${iconUrl}" onerror="this.style.visibility='hidden'">
-            <div>${coin.short}/USDT<div class="coin-sub">${coin.name}</div></div>
-          </div>
-        </td>
-        <td><canvas width="70" height="30" id="chart-${coin.id}"></canvas></td>
-        <td>
-          <div class="${up?'change-up':'change-down'}">${up?'+':''}${changePercent.toFixed(2)}%</div>
-          <div>$${price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>
-        </td>`;
-      tbody.appendChild(row);
-
-      // স্পার্কলাইন চার্টের জন্য CoinCap history (গত ২৪ ঘণ্টা, ১ ঘণ্টা ইন্টারভাল)
-      const end = Date.now();
-      const start = end - 24 * 60 * 60 * 1000;
-      fetch(`https://api.coincap.io/v2/assets/${coin.id}/history?interval=h1&start=${start}&end=${end}`)
-        .then(r => r.json())
-        .then(hist => {
-          if (!hist.data || hist.data.length === 0) return;
-          const prices = hist.data.map(h => parseFloat(h.priceUsd));
-          prices.push(price); // লাইভ প্রাইস শেষে যোগ
-          const canvas = document.getElementById('chart-' + coin.id);
-          if (canvas) drawSparkline(canvas, prices, up);
-        })
-        .catch(() => {});
+    if (['bitcoin','ethereum','ripple'].includes(coin.id)) {
+      const hCard = document.createElement('div');
+      hCard.className = 'highlight-card';
+      hCard.innerHTML = `<div class="name">${coin.short}/USDT</div><div class="price ${up?'change-up':'change-down'}">$${coin.price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>`;
+      highlightRow.appendChild(hCard);
     }
+
+    const row = document.createElement('tr');
+    row.dataset.id = coin.id;
+    row.innerHTML = `
+      <td>
+        <div class="coin-name">
+          <img src="${iconUrl}" onerror="this.style.visibility='hidden'">
+          <div>${coin.short}/USDT<div class="coin-sub">${coin.name}</div></div>
+        </div>
+      </td>
+      <td><canvas width="70" height="30" id="chart-${coin.id}"></canvas></td>
+      <td>
+        <div class="${up?'change-up':'change-down'} price-cell">${up?'+':''}${coin.changePercent.toFixed(2)}%</div>
+        <div class="price-value">$${coin.price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>
+      </td>`;
+    tbody.appendChild(row);
+
+    const canvas = document.getElementById('chart-' + coin.id);
+    if (canvas && coin.sparkline) {
+      drawSparkline(canvas, coin.sparkline, up);
+    }
+  });
+}
+
+async function loadMarket() {
+  const tbody = document.getElementById('market-body');
+  try {
+    const ids = popularCoins.map(c => c.id).join(',');
+    const res = await fetch(
+      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&sparkline=true&price_change_percentage=24h`
+    );
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
+
+    marketDataCache = popularCoins.map(coin => {
+      const item = data.find(d => d.id === coin.id);
+      if (!item) return null;
+      return {
+        id: coin.id,
+        name: coin.name,
+        short: coin.short,
+        image: item.image,
+        price: item.current_price,
+        basePrice: item.current_price,
+        changePercent: item.price_change_percentage_24h || 0,
+        baseChangePercent: item.price_change_percentage_24h || 0,
+        sparkline: item.sparkline_in_7d ? item.sparkline_in_7d.price.slice(-24) : null
+      };
+    }).filter(Boolean);
+
+    renderMarket();
   } catch (err) {
+    console.error(err);
     tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Error: ' + err.message + '</td></tr>';
   }
 }
 
-// ===== Forex (অপরিবর্তিত) =====
+function simulateMarketUpdate() {
+  if (marketDataCache.length === 0) return;
+
+  marketDataCache.forEach(coin => {
+    const randomFactor = (Math.random() - 0.5) * 0.001;
+    coin.price = coin.basePrice * (1 + randomFactor);
+    coin.changePercent = coin.baseChangePercent + (randomFactor * 100);
+
+    const row = document.querySelector(`#market-body tr[data-id="${coin.id}"]`);
+    if (row) {
+      const priceEl = row.querySelector('.price-value');
+      const changeEl = row.querySelector('.price-cell');
+      if (priceEl) priceEl.textContent = '$' + coin.price.toLocaleString(undefined, {maximumFractionDigits: 4});
+      if (changeEl) {
+        const up = coin.changePercent >= 0;
+        changeEl.className = up ? 'change-up price-cell' : 'change-down price-cell';
+        changeEl.textContent = (up ? '+' : '') + coin.changePercent.toFixed(2) + '%';
+      }
+    }
+  });
+}
+
+// ===== Forex =====
 const forexList = [
   { pair: 'EUR/USD', flag: '🇪🇺', base: 'EUR', quote: 'USD' },
   { pair: 'USD/HKD', flag: '🇺🇸', base: 'USD', quote: 'HKD' },
@@ -423,4 +458,179 @@ async function loadForex() {
       </td>
       <td><canvas width="70" height="30" id="chart-fx-${fx.pair.replace('/','')}"></canvas></td>
       <td>
-        <div class="${up?'change-up':'change-down
+        <div class="${up?'change-up':'change-down'}">${up?'+':''}${changePercent.toFixed(2)}%</div>
+        <div>${latest.toLocaleString(undefined,{maximumFractionDigits:4})}</div>
+      </td>`;
+    tbody.appendChild(row);
+
+    const canvas = document.getElementById('chart-fx-' + fx.pair.replace('/',''));
+    if (canvas && values.length > 1) drawSparkline(canvas, values, up);
+  });
+
+  if (tbody.innerHTML === '') {
+    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Could not load forex data. Please try again.</td></tr>';
+  }
+}
+
+// ===== Stocks (Finnhub) =====
+const FINNHUB_API_KEY = 'dafpl19r01quvmmgssp0dafpl19r01quvmmgsspg';
+
+const stockList = [
+  { symbol: 'AAPL', name: 'Apple Inc.', domain: 'apple.com' },
+  { symbol: 'MSFT', name: 'Microsoft', domain: 'microsoft.com' },
+  { symbol: 'GOOGL', name: 'Alphabet (Google)', domain: 'google.com' },
+  { symbol: 'AMZN', name: 'Amazon', domain: 'amazon.com' },
+  { symbol: 'NVDA', name: 'NVIDIA', domain: 'nvidia.com' },
+  { symbol: 'META', name: 'Meta Platforms', domain: 'meta.com' },
+  { symbol: 'TSLA', name: 'Tesla', domain: 'tesla.com' },
+  { symbol: 'AVGO', name: 'Broadcom', domain: 'broadcom.com' },
+  { symbol: 'ORCL', name: 'Oracle', domain: 'oracle.com' },
+  { symbol: 'NFLX', name: 'Netflix', domain: 'netflix.com' },
+  { symbol: 'AMD', name: 'AMD', domain: 'amd.com' },
+  { symbol: 'ADBE', name: 'Adobe', domain: 'adobe.com' },
+  { symbol: 'CRM', name: 'Salesforce', domain: 'salesforce.com' },
+  { symbol: 'INTC', name: 'Intel', domain: 'intel.com' },
+  { symbol: 'CSCO', name: 'Cisco', domain: 'cisco.com' },
+  { symbol: 'PEP', name: 'PepsiCo', domain: 'pepsico.com' },
+  { symbol: 'KO', name: 'Coca-Cola', domain: 'coca-colacompany.com' },
+  { symbol: 'WMT', name: 'Walmart', domain: 'walmart.com' },
+  { symbol: 'DIS', name: 'Walt Disney', domain: 'disney.com' },
+  { symbol: 'BA', name: 'Boeing', domain: 'boeing.com' }
+];
+
+async function fetchStockWithRetry(symbol, retries = 2) {
+  for (let attempt = 0; attempt <= retries; attempt++) {
+    try {
+      const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${FINNHUB_API_KEY}`);
+      if (res.status === 429) {
+        await new Promise(r => setTimeout(r, 2000 * (attempt + 1)));
+        continue;
+      }
+      if (!res.ok) return null;
+      return await res.json();
+    } catch (err) {
+      await new Promise(r => setTimeout(r, 1000));
+    }
+  }
+  return null;
+}
+
+async function loadStocks() {
+  const tbody = document.getElementById('market-body');
+  const highlightRow = document.getElementById('highlight-row');
+  tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#848e9c;">Loading... (this may take a moment)</td></tr>';
+  highlightRow.innerHTML = '';
+
+  if (!FINNHUB_API_KEY || FINNHUB_API_KEY === 'YOUR_FINNHUB_API_KEY_HERE') {
+    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Please add your Finnhub API key in the code.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = '';
+  let shown = 0;
+
+  for (const s of stockList) {
+    const q = await fetchStockWithRetry(s.symbol);
+    if (!q || q.c === undefined || q.c === 0) {
+      await new Promise(r => setTimeout(r, 400));
+      continue;
+    }
+
+    const price = q.c;
+    const changePercent = q.dp ?? 0;
+    const up = changePercent >= 0;
+    const logoUrl = `https://logo.clearbit.com/${s.domain}`;
+
+    if (shown < 3) {
+      const hCard = document.createElement('div');
+      hCard.className = 'highlight-card';
+      hCard.innerHTML = `<div class="name">${s.symbol}</div><div class="price ${up?'change-up':'change-down'}">$${price.toFixed(2)}</div>`;
+      highlightRow.appendChild(hCard);
+    }
+    shown++;
+
+    const row = document.createElement('tr');
+    row.innerHTML = `
+      <td>
+        <div class="coin-name">
+          <img src="${logoUrl}" onerror="this.style.visibility='hidden'">
+          <div>${s.symbol}<div class="coin-sub">${s.name}</div></div>
+        </div>
+      </td>
+      <td><canvas width="70" height="30" id="chart-stock-${s.symbol}"></canvas></td>
+      <td>
+        <div class="${up?'change-up':'change-down'}">${up?'+':''}${changePercent.toFixed(2)}%</div>
+        <div>$${price.toFixed(2)}</div>
+      </td>`;
+    tbody.appendChild(row);
+
+    const canvas = document.getElementById('chart-stock-' + s.symbol);
+    if (canvas) drawSparkline(canvas, [q.pc, q.l, q.o, q.h, q.c], up);
+
+    await new Promise(r => setTimeout(r, 400));
+  }
+
+  if (tbody.innerHTML === '') {
+    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Could not load stock data. Please try again shortly.</td></tr>';
+  }
+}
+
+loadMarket();
+setInterval(loadMarket, 30000);         // আসল ডেটা প্রতি ৩০ সেকেন্ডে
+setInterval(simulateMarketUpdate, 3000); // সিমুলেটেড আপডেট প্রতি ৩ সেকেন্ডে
+
+setInterval(() => {
+  if (currentTab === 'forex') {
+    loadForex();
+  } else if (currentTab === 'stocks') {
+    loadStocks();
+  }
+}, 60000);
+
+// ==== Notification badge ====
+const firebaseConfig = {
+  apiKey: "AIzaSyDJoPr8RvE1xkNTKRr5kwTx6E51GCMn_HE",
+  authDomain: "abc-company-6272a.firebaseapp.com",
+  projectId: "abc-company-6272a",
+  storageBucket: "abc-company-6272a.firebasestorage.app",
+  messagingSenderId: "1026212780106",
+  appId: "1:1026212780106:web:985ec1bc35837d6320eeb3"
+};
+firebase.initializeApp(firebaseConfig);
+
+let pendingDeposits = 0;
+let pendingWithdrawals = 0;
+
+function updateNotifBadge() {
+  const badge = document.getElementById('notif-badge');
+  if (!badge) return;
+  const total = pendingDeposits + pendingWithdrawals;
+  badge.textContent = total;
+  badge.classList.toggle('show', total > 0);
+}
+
+firebase.auth().onAuthStateChanged(user => {
+  if (!user) return;
+
+  const db = firebase.firestore();
+
+  db.collection('deposits')
+    .where('uid', '==', user.uid)
+    .where('status', '==', 'pending')
+    .onSnapshot(snap => {
+      pendingDeposits = snap.size;
+      updateNotifBadge();
+    });
+
+  db.collection('withdrawals')
+    .where('uid', '==', user.uid)
+    .where('status', '==', 'pending')
+    .onSnapshot(snap => {
+      pendingWithdrawals = snap.size;
+      updateNotifBadge();
+    });
+});
+</script>
+
+</body>
+</html>
