@@ -410,135 +410,30 @@ setInterval(() => {
   track.innerHTML += track.innerHTML;
 })();
 
-// ★★★ CoinCap API এর জন্য কয়েন লিস্ট (id ফিল্ড) ★★★
-const coinList = [
-  { id: 'bitcoin', name: 'Bitcoin', short: 'BTC', icon: 'btc' },
-  { id: 'ethereum', name: 'Ethereum', short: 'ETH', icon: 'eth' },
-  { id: 'binance-coin', name: 'BNB', short: 'BNB', icon: 'bnb' },
-  { id: 'solana', name: 'Solana', short: 'SOL', icon: 'sol' },
-  { id: 'xrp', name: 'XRP', short: 'XRP', icon: 'xrp' },
-  { id: 'cardano', name: 'Cardano', short: 'ADA', icon: 'ada' },
-  { id: 'dogecoin', name: 'Dogecoin', short: 'DOGE', icon: 'doge' },
-  { id: 'tron', name: 'TRON', short: 'TRX', icon: 'trx' },
-  { id: 'toncoin', name: 'Toncoin', short: 'TON', icon: 'ton' },
-  { id: 'polkadot', name: 'Polkadot', short: 'DOT', icon: 'dot' },
-  { id: 'polygon', name: 'Polygon', short: 'MATIC', icon: 'matic' },
-  { id: 'litecoin', name: 'Litecoin', short: 'LTC', icon: 'ltc' },
-  { id: 'shiba-inu', name: 'Shiba Inu', short: 'SHIB', icon: 'shib' },
-  { id: 'avalanche', name: 'Avalanche', short: 'AVAX', icon: 'avax' },
-  { id: 'chainlink', name: 'Chainlink', short: 'LINK', icon: 'link' },
-  { id: 'bitcoin-cash', name: 'Bitcoin Cash', short: 'BCH', icon: 'bch' },
-  { id: 'cosmos', name: 'Cosmos', short: 'ATOM', icon: 'atom' },
-  { id: 'stellar', name: 'Stellar', short: 'XLM', icon: 'xlm' },
-  { id: 'uniswap', name: 'Uniswap', short: 'UNI', icon: 'uni' },
-  { id: 'ethereum-classic', name: 'Ethereum Classic', short: 'ETC', icon: 'etc' },
-  { id: 'filecoin', name: 'Filecoin', short: 'FIL', icon: 'fil' },
-  { id: 'aptos', name: 'Aptos', short: 'APT', icon: 'apt' },
-  { id: 'arbitrum', name: 'Arbitrum', short: 'ARB', icon: 'arb' },
-  { id: 'optimism', name: 'Optimism', short: 'OP', icon: 'op' },
-  { id: 'near-protocol', name: 'NEAR Protocol', short: 'NEAR', icon: 'near' },
-  { id: 'vechain', name: 'VeChain', short: 'VET', icon: 'vet' },
-  { id: 'hedera-hashgraph', name: 'Hedera', short: 'HBAR', icon: 'hbar' },
-  { id: 'internet-computer', name: 'Internet Computer', short: 'ICP', icon: 'icp' },
-  { id: 'algorand', name: 'Algorand', short: 'ALGO', icon: 'algo' },
-  { id: 'aave', name: 'Aave', short: 'AAVE', icon: 'aave' },
-  { id: 'maker', name: 'Maker', short: 'MKR', icon: 'mkr' },
-  { id: 'the-graph', name: 'The Graph', short: 'GRT', icon: 'grt' },
-  { id: 'the-sandbox', name: 'The Sandbox', short: 'SAND', icon: 'sand' },
-  { id: 'decentraland', name: 'Decentraland', short: 'MANA', icon: 'mana' },
-  { id: 'axie-infinity', name: 'Axie Infinity', short: 'AXS', icon: 'axs' },
-  { id: 'eos', name: 'EOS', short: 'EOS', icon: 'eos' },
-  { id: 'fantom', name: 'Fantom', short: 'FTM', icon: 'ftm' },
-  { id: 'theta-network', name: 'Theta Network', short: 'THETA', icon: 'theta' },
-  { id: 'tezos', name: 'Tezos', short: 'XTZ', icon: 'xtz' },
-  { id: 'multiversx', name: 'MultiversX', short: 'EGLD', icon: 'egld' },
-  { id: 'kava', name: 'Kava', short: 'KAVA', icon: 'kava' },
-  { id: 'thorchain', name: 'THORChain', short: 'RUNE', icon: 'rune' },
-  { id: 'chiliz', name: 'Chiliz', short: 'CHZ', icon: 'chz' },
-  { id: 'enjin-coin', name: 'Enjin Coin', short: 'ENJ', icon: 'enj' },
-  { id: 'zcash', name: 'Zcash', short: 'ZEC', icon: 'zec' },
-  { id: 'dash', name: 'Dash', short: 'DASH', icon: 'dash' },
-  { id: 'compound', name: 'Compound', short: 'COMP', icon: 'comp' },
-  { id: 'synthetix-network-token', name: 'Synthetix', short: 'SNX', icon: 'snx' },
-  { id: 'curve-dao-token', name: 'Curve DAO', short: 'CRV', icon: 'crv' },
-  { id: 'yearn-finance', name: 'yearn.finance', short: 'YFI', icon: 'yfi' },
-  { id: '1inch', name: '1inch', short: '1INCH', icon: '1inch' },
-  { id: 'basic-attention-token', name: 'Basic Attention', short: 'BAT', icon: 'bat' },
-  { id: 'zilliqa', name: 'Zilliqa', short: 'ZIL', icon: 'zil' },
-  { id: 'iota', name: 'IOTA', short: 'IOTA', icon: 'iota' },
-  { id: 'neo', name: 'NEO', short: 'NEO', icon: 'neo' },
-  { id: 'qtum', name: 'Qtum', short: 'QTUM', icon: 'qtum' },
-  { id: 'waves', name: 'Waves', short: 'WAVES', icon: 'waves' },
-  { id: 'kusama', name: 'Kusama', short: 'KSM', icon: 'ksm' },
-  { id: 'ontology', name: 'Ontology', short: 'ONT', icon: 'ont' },
-  { id: 'icon', name: 'ICON', short: 'ICX', icon: 'icx' },
-  { id: '0x', name: '0x Protocol', short: 'ZRX', icon: 'zrx' },
-  { id: 'ren', name: 'Ren', short: 'REN', icon: 'ren' },
-  { id: 'storj', name: 'Storj', short: 'STORJ', icon: 'storj' },
-  { id: 'ankr', name: 'Ankr', short: 'ANKR', icon: 'ankr' },
-  { id: 'celer-network', name: 'Celer Network', short: 'CELR', icon: 'celr' },
-  { id: 'cartesi', name: 'Cartesi', short: 'CTSI', icon: 'ctsi' },
-  { id: 'skale', name: 'SKALE', short: 'SKL', icon: 'skl' },
-  { id: 'sushi', name: 'SushiSwap', short: 'SUSHI', icon: 'sushi' },
-  { id: 'loopring', name: 'Loopring', short: 'LRC', icon: 'lrc' },
-  { id: 'kyber-network', name: 'Kyber Network', short: 'KNC', icon: 'knc' },
-  { id: 'band-protocol', name: 'Band Protocol', short: 'BAND', icon: 'band' },
-  { id: 'reserve-rights', name: 'Reserve Rights', short: 'RSR', icon: 'rsr' },
-  { id: 'ocean-protocol', name: 'Ocean Protocol', short: 'OCEAN', icon: 'ocean' },
-  { id: 'civic', name: 'Civic', short: 'CVC', icon: 'cvc' },
-  { id: 'digibyte', name: 'DigiByte', short: 'DGB', icon: 'dgb' },
-  { id: 'siacoin', name: 'Siacoin', short: 'SC', icon: 'sc' },
-  { id: 'ravencoin', name: 'Ravencoin', short: 'RVN', icon: 'rvn' },
-  { id: 'bittorrent', name: 'BitTorrent', short: 'BTT', icon: 'btt' },
-  { id: 'wink', name: 'WINkLink', short: 'WIN', icon: 'win' },
-  { id: 'holo', name: 'Holo', short: 'HOT', icon: 'hot' },
-  { id: 'stormx', name: 'StormX', short: 'STMX', icon: 'stmx' },
-  { id: 'dent', name: 'Dent', short: 'DENT', icon: 'dent' },
-  { id: 'vethor-token', name: 'VeThor Token', short: 'VTHO', icon: 'vtho' },
-  { id: 'iost', name: 'IOST', short: 'IOST', icon: 'iost' },
-  { id: 'harmony', name: 'Harmony', short: 'ONE', icon: 'one' },
-  { id: 'hive', name: 'Hive', short: 'HIVE', icon: 'hive' },
-  { id: 'steem', name: 'Steem', short: 'STEEM', icon: 'steem' },
-  { id: 'wax', name: 'WAX', short: 'WAXP', icon: 'waxp' },
-  { id: 'flow', name: 'Flow', short: 'FLOW', icon: 'flow' },
-  { id: 'klaytn', name: 'Klaytn', short: 'KLAY', icon: 'klay' },
-  { id: 'mina-protocol', name: 'Mina Protocol', short: 'MINA', icon: 'mina' },
-  { id: 'oasis-network', name: 'Oasis Network', short: 'ROSE', icon: 'rose' },
-  { id: 'gala', name: 'Gala', short: 'GALA', icon: 'gala' },
-  { id: 'immutable-x', name: 'Immutable X', short: 'IMX', icon: 'imx' },
-  { id: 'lido-dao', name: 'Lido DAO', short: 'LDO', icon: 'ldo' },
-  { id: 'injective-protocol', name: 'Injective', short: 'INJ', icon: 'inj' },
-  { id: 'sei-network', name: 'Sei', short: 'SEI', icon: 'sei' },
-  { id: 'sui', name: 'Sui', short: 'SUI', icon: 'sui' },
-  { id: 'pepe', name: 'Pepe', short: 'PEPE', icon: 'pepe' }
-];
-
+// ★★★ CoinGecko API — কোনো কী ছাড়াই বিশ্বব্যাপী কাজ করে ★★★
 async function loadCrypto() {
   const listEl = document.getElementById('crypto-list');
   try {
-    const res = await fetch('https://api.coincap.io/v2/assets?limit=100');
-    const json = await res.json();
-    const assets = json.data;
+    const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false');
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    const data = await res.json();
     listEl.innerHTML = '';
 
-    coinList.forEach(coinInfo => {
-      const asset = assets.find(a => a.id === coinInfo.id);
-      if (!asset) return;
-
-      const price = parseFloat(asset.priceUsd);
-      const changePercent = parseFloat(asset.changePercent24Hr);
+    data.forEach(coin => {
+      const price = coin.current_price;
+      const changePercent = coin.price_change_percentage_24h || 0;
       const changeUp = changePercent >= 0;
       const changeClass = changeUp ? 'crypto-change-up' : 'crypto-change-down';
       const changeSign = changeUp ? '+' : '';
-      const iconUrl = 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/' + coinInfo.icon + '.png';
+      const iconUrl = coin.image;
 
       const card = document.createElement('div');
       card.className = 'crypto-card';
       card.innerHTML = `
         <div class="crypto-left">
-          <img src="${iconUrl}" alt="${coinInfo.name}" onerror="this.style.visibility='hidden'">
+          <img src="${iconUrl}" alt="${coin.name}" onerror="this.style.visibility='hidden'">
           <div>
-            <div class="crypto-name">${coinInfo.short} <span class="crypto-symbol">${coinInfo.name}</span></div>
+            <div class="crypto-name">${coin.symbol.toUpperCase()} <span class="crypto-symbol">${coin.name}</span></div>
           </div>
         </div>
         <div class="crypto-right" style="display:flex; gap:24px; align-items:center;">
@@ -557,28 +452,11 @@ async function loadCrypto() {
   }
 }
 loadCrypto();
-setInterval(loadCrypto, 15000); // প্রতি ১৫ সেকেন্ডে রিফ্রেশ (CoinCap-এর রেট লিমিটের জন্য)
+setInterval(loadCrypto, 30000); // প্রতি ৩০ সেকেন্ডে রিফ্রেশ
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 <script>
 const firebaseConfig = {
-  apiKey: "AIzaSyDJoPr8RvE1xkNTKRr5kwTx6E51GCMn_HE",
-  authDomain: "abc-company-6272a.firebaseapp.com",
-  projectId: "abc-company-6272a",
-  storageBucket: "abc-company-6272a.firebasestorage.app",
-  messagingSenderId: "1026212780106",
-  appId: "1:1026212780106:web:985ec1bc35837d6320eeb3"
-};
-firebase.initializeApp(firebaseConfig);
-
-firebase.auth().onAuthStateChanged(user => {
-  if (user) {
-    window.location.href = 'market.html';
-  }
-});
-</script>
-
-</body>
-</html>
+  apiKey: "AIzaSyDJoPr8RvE1xkNTKRr5kwTx6E51GCM
