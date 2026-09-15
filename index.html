@@ -410,49 +410,89 @@ setInterval(() => {
   track.innerHTML += track.innerHTML;
 })();
 
-// ★★★ CoinGecko API — কোনো কী ছাড়াই বিশ্বব্যাপী কাজ করে ★★★
-async function loadCrypto() {
+// ★★★ CoinGecko + সিমুলেটেড লাইভ আপডেট (প্রতি ৩ সেকেন্ডে) ★★★
+let cryptoDataCache = [];
+
+async function fetchCryptoData() {
   const listEl = document.getElementById('crypto-list');
   try {
     const res = await fetch('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false');
     if (!res.ok) throw new Error('HTTP ' + res.status);
     const data = await res.json();
-    listEl.innerHTML = '';
-
-    data.forEach(coin => {
-      const price = coin.current_price;
-      const changePercent = coin.price_change_percentage_24h || 0;
-      const changeUp = changePercent >= 0;
-      const changeClass = changeUp ? 'crypto-change-up' : 'crypto-change-down';
-      const changeSign = changeUp ? '+' : '';
-      const iconUrl = coin.image;
-
-      const card = document.createElement('div');
-      card.className = 'crypto-card';
-      card.innerHTML = `
-        <div class="crypto-left">
-          <img src="${iconUrl}" alt="${coin.name}" onerror="this.style.visibility='hidden'">
-          <div>
-            <div class="crypto-name">${coin.symbol.toUpperCase()} <span class="crypto-symbol">${coin.name}</span></div>
-          </div>
-        </div>
-        <div class="crypto-right" style="display:flex; gap:24px; align-items:center;">
-          <div class="crypto-price">$${price.toLocaleString(undefined, {maximumFractionDigits: 4})}</div>
-          <div class="${changeClass}">${changeSign}${changePercent.toFixed(2)}%</div>
-        </div>`;
-      listEl.appendChild(card);
-    });
-
-    if (listEl.innerHTML === '') {
-      listEl.innerHTML = '<p style="text-align:center;color:#848e9c;">No data available right now. Please refresh.</p>';
-    }
+    cryptoDataCache = data.map(coin => ({
+      id: coin.id,
+      name: coin.name,
+      symbol: coin.symbol.toUpperCase(),
+      image: coin.image,
+      price: coin.current_price,
+      basePrice: coin.current_price,
+      changePercent: coin.price_change_percentage_24h || 0,
+      baseChangePercent: coin.price_change_percentage_24h || 0
+    }));
+    renderCryptoList();
   } catch (err) {
     console.error(err);
-    listEl.innerHTML = '<p style="text-align:center;color:#f6465d;">Could not load prices right now. Please refresh the page in a moment.</p>';
+    if (cryptoDataCache.length === 0) {
+      listEl.innerHTML = '<p style="text-align:center;color:#f6465d;">Could not load prices right now. Please refresh the page in a moment.</p>';
+    }
   }
 }
-loadCrypto();
-setInterval(loadCrypto, 30000); // প্রতি ৩০ সেকেন্ডে রিফ্রেশ
+
+function renderCryptoList() {
+  const listEl = document.getElementById('crypto-list');
+  listEl.innerHTML = '';
+
+  cryptoDataCache.forEach(coin => {
+    const changeUp = coin.changePercent >= 0;
+    const changeClass = changeUp ? 'crypto-change-up' : 'crypto-change-down';
+    const changeSign = changeUp ? '+' : '';
+
+    const card = document.createElement('div');
+    card.className = 'crypto-card';
+    card.dataset.id = coin.id;
+    card.innerHTML = `
+      <div class="crypto-left">
+        <img src="${coin.image}" alt="${coin.name}" onerror="this.style.visibility='hidden'">
+        <div>
+          <div class="crypto-name">${coin.symbol} <span class="crypto-symbol">${coin.name}</span></div>
+        </div>
+      </div>
+      <div class="crypto-right" style="display:flex; gap:24px; align-items:center;">
+        <div class="crypto-price">$${coin.price.toLocaleString(undefined, {maximumFractionDigits: 4})}</div>
+        <div class="${changeClass}">${changeSign}${coin.changePercent.toFixed(2)}%</div>
+      </div>`;
+    listEl.appendChild(card);
+  });
+}
+
+function simulateLiveUpdate() {
+  if (cryptoDataCache.length === 0) return;
+
+  cryptoDataCache.forEach(coin => {
+    // ±০.০১% থেকে ±০.০৫% র‍্যান্ডম পরিবর্তন
+    const randomFactor = (Math.random() - 0.5) * 0.001;
+    coin.price = coin.basePrice * (1 + randomFactor);
+    coin.changePercent = coin.baseChangePercent + (randomFactor * 100);
+
+    const card = document.querySelector(`.crypto-card[data-id="${coin.id}"]`);
+    if (card) {
+      const priceEl = card.querySelector('.crypto-price');
+      const changeEl = card.querySelector('.crypto-change-up, .crypto-change-down');
+      if (priceEl) {
+        priceEl.textContent = '$' + coin.price.toLocaleString(undefined, {maximumFractionDigits: 4});
+      }
+      if (changeEl) {
+        const up = coin.changePercent >= 0;
+        changeEl.className = up ? 'crypto-change-up' : 'crypto-change-down';
+        changeEl.textContent = (up ? '+' : '') + coin.changePercent.toFixed(2) + '%';
+      }
+    }
+  });
+}
+
+fetchCryptoData();
+setInterval(fetchCryptoData, 30000);       // আসল ডেটা প্রতি ৩০ সেকেন্ডে
+setInterval(simulateLiveUpdate, 3000);      // সিমুলেটেড লাইভ আপডেট প্রতি ৩ সেকেন্ডে
 </script>
 
 <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
