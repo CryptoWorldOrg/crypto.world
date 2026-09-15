@@ -208,55 +208,47 @@ supportIcon.addEventListener('click', (e) => {
 supportMenu.addEventListener('click', (e) => e.stopPropagation());
 document.addEventListener('click', () => supportMenu.classList.remove('show'));
 
-// ★★★ CoinGecko API-এর জন্য কয়েন লিস্ট ★★★
-const popularCoins = [
-  { id: 'bitcoin', name: 'Bitcoin', short: 'BTC' },
-  { id: 'ethereum', name: 'Ethereum', short: 'ETH' },
-  { id: 'binancecoin', name: 'BNB', short: 'BNB' },
-  { id: 'solana', name: 'Solana', short: 'SOL' },
-  { id: 'ripple', name: 'XRP', short: 'XRP' },
-  { id: 'cardano', name: 'Cardano', short: 'ADA' },
-  { id: 'dogecoin', name: 'Dogecoin', short: 'DOGE' },
-  { id: 'tron', name: 'TRON', short: 'TRX' },
-  { id: 'the-open-network', name: 'Toncoin', short: 'TON' },
-  { id: 'polkadot', name: 'Polkadot', short: 'DOT' },
-  { id: 'matic-network', name: 'Polygon', short: 'MATIC' },
-  { id: 'litecoin', name: 'Litecoin', short: 'LTC' },
-  { id: 'shiba-inu', name: 'Shiba Inu', short: 'SHIB' },
-  { id: 'avalanche-2', name: 'Avalanche', short: 'AVAX' },
-  { id: 'chainlink', name: 'Chainlink', short: 'LINK' },
-  { id: 'cosmos', name: 'Cosmos', short: 'ATOM' },
-  { id: 'uniswap', name: 'Uniswap', short: 'UNI' },
-  { id: 'stellar', name: 'Stellar', short: 'XLM' },
-  { id: 'near', name: 'NEAR Protocol', short: 'NEAR' },
-  { id: 'aptos', name: 'Aptos', short: 'APT' },
-  { id: 'arbitrum', name: 'Arbitrum', short: 'ARB' },
-  { id: 'optimism', name: 'Optimism', short: 'OP' },
-  { id: 'filecoin', name: 'Filecoin', short: 'FIL' },
-  { id: 'internet-computer', name: 'Internet Computer', short: 'ICP' },
-  { id: 'bitcoin-cash', name: 'Bitcoin Cash', short: 'BCH' },
-  { id: 'algorand', name: 'Algorand', short: 'ALGO' },
-  { id: 'vechain', name: 'VeChain', short: 'VET' },
-  { id: 'the-sandbox', name: 'The Sandbox', short: 'SAND' },
-  { id: 'decentraland', name: 'Decentraland', short: 'MANA' },
-  { id: 'hedera-hashgraph', name: 'Hedera', short: 'HBAR' },
-  { id: 'ethereum-classic', name: 'Ethereum Classic', short: 'ETC' },
-  { id: 'monero', name: 'Monero', short: 'XMR' },
-  { id: 'eos', name: 'EOS', short: 'EOS' },
-  { id: 'aave', name: 'Aave', short: 'AAVE' },
-  { id: 'the-graph', name: 'The Graph', short: 'GRT' },
-  { id: 'maker', name: 'Maker', short: 'MKR' },
-  { id: 'quant-network', name: 'Quant', short: 'QNT' },
-  { id: 'fantom', name: 'Fantom', short: 'FTM' },
-  { id: 'theta-token', name: 'Theta Network', short: 'THETA' },
-  { id: 'tezos', name: 'Tezos', short: 'XTZ' },
-  { id: 'elrond-erd-2', name: 'MultiversX', short: 'EGLD' }
+// ★★★ আমাদের কয়েন লিস্ট (CoinLore-এর symbol অনুযায়ী) ★★★
+const coinList = [
+  { symbol: 'BTC', name: 'Bitcoin', short: 'BTC' },
+  { symbol: 'ETH', name: 'Ethereum', short: 'ETH' },
+  { symbol: 'BNB', name: 'BNB', short: 'BNB' },
+  { symbol: 'SOL', name: 'Solana', short: 'SOL' },
+  { symbol: 'XRP', name: 'XRP', short: 'XRP' },
+  { symbol: 'ADA', name: 'Cardano', short: 'ADA' },
+  { symbol: 'DOGE', name: 'Dogecoin', short: 'DOGE' },
+  { symbol: 'TRX', name: 'TRON', short: 'TRX' },
+  { symbol: 'TON', name: 'Toncoin', short: 'TON' },
+  { symbol: 'DOT', name: 'Polkadot', short: 'DOT' },
+  { symbol: 'MATIC', name: 'Polygon', short: 'MATIC' },
+  { symbol: 'LTC', name: 'Litecoin', short: 'LTC' },
+  { symbol: 'SHIB', name: 'Shiba Inu', short: 'SHIB' },
+  { symbol: 'AVAX', name: 'Avalanche', short: 'AVAX' },
+  { symbol: 'LINK', name: 'Chainlink', short: 'LINK' },
+  { symbol: 'ATOM', name: 'Cosmos', short: 'ATOM' },
+  { symbol: 'UNI', name: 'Uniswap', short: 'UNI' },
+  { symbol: 'XLM', name: 'Stellar', short: 'XLM' },
+  { symbol: 'NEAR', name: 'NEAR Protocol', short: 'NEAR' },
+  { symbol: 'APT', name: 'Aptos', short: 'APT' },
+  { symbol: 'ARB', name: 'Arbitrum', short: 'ARB' },
+  { symbol: 'OP', name: 'Optimism', short: 'OP' },
+  { symbol: 'FIL', name: 'Filecoin', short: 'FIL' },
+  { symbol: 'ICP', name: 'Internet Computer', short: 'ICP' },
+  { symbol: 'BCH', name: 'Bitcoin Cash', short: 'BCH' },
+  { symbol: 'ALGO', name: 'Algorand', short: 'ALGO' },
+  { symbol: 'VET', name: 'VeChain', short: 'VET' },
+  { symbol: 'SAND', name: 'The Sandbox', short: 'SAND' },
+  { symbol: 'MANA', name: 'Decentraland', short: 'MANA' },
+  { symbol: 'HBAR', name: 'Hedera', short: 'HBAR' }
 ];
+
+let marketDataCache = [];
 
 function drawSparkline(canvas, prices, up) {
   const ctx = canvas.getContext('2d');
   const w = canvas.width, h = canvas.height;
   ctx.clearRect(0,0,w,h);
+  if (!prices || prices.length < 2) return;
   const min = Math.min(...prices), max = Math.max(...prices);
   ctx.beginPath();
   prices.forEach((p,i) => {
@@ -269,71 +261,27 @@ function drawSparkline(canvas, prices, up) {
   ctx.stroke();
 }
 
-let marketDataCache = [];
-
-function renderMarket() {
-  const tbody = document.getElementById('market-body');
-  const highlightRow = document.getElementById('highlight-row');
-  tbody.innerHTML = '';
-  highlightRow.innerHTML = '';
-
-  marketDataCache.forEach(coin => {
-    const up = coin.changePercent >= 0;
-    const iconUrl = coin.image;
-
-    if (['bitcoin','ethereum','ripple'].includes(coin.id)) {
-      const hCard = document.createElement('div');
-      hCard.className = 'highlight-card';
-      hCard.innerHTML = `<div class="name">${coin.short}/USDT</div><div class="price ${up?'change-up':'change-down'}">$${coin.price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>`;
-      highlightRow.appendChild(hCard);
-    }
-
-    const row = document.createElement('tr');
-    row.dataset.id = coin.id;
-    row.innerHTML = `
-      <td>
-        <div class="coin-name">
-          <img src="${iconUrl}" onerror="this.style.visibility='hidden'">
-          <div>${coin.short}/USDT<div class="coin-sub">${coin.name}</div></div>
-        </div>
-      </td>
-      <td><canvas width="70" height="30" id="chart-${coin.id}"></canvas></td>
-      <td>
-        <div class="${up?'change-up':'change-down'} price-cell">${up?'+':''}${coin.changePercent.toFixed(2)}%</div>
-        <div class="price-value">$${coin.price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>
-      </td>`;
-    tbody.appendChild(row);
-
-    const canvas = document.getElementById('chart-' + coin.id);
-    if (canvas && coin.sparkline) {
-      drawSparkline(canvas, coin.sparkline, up);
-    }
-  });
-}
-
+// ★★★ CoinLore API থেকে ডেটা ★★★
 async function loadMarket() {
   const tbody = document.getElementById('market-body');
+  const highlightRow = document.getElementById('highlight-row');
   try {
-    const ids = popularCoins.map(c => c.id).join(',');
-    const res = await fetch(
-      `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&sparkline=true&price_change_percentage=24h`
-    );
+    const res = await fetch('https://api.coinlore.net/api/tickers/?limit=100');
     if (!res.ok) throw new Error('HTTP ' + res.status);
-    const data = await res.json();
+    const json = await res.json();
+    const data = json.data;
 
-    marketDataCache = popularCoins.map(coin => {
-      const item = data.find(d => d.id === coin.id);
+    marketDataCache = coinList.map(coin => {
+      const item = data.find(d => d.symbol === coin.symbol);
       if (!item) return null;
       return {
-        id: coin.id,
+        symbol: coin.symbol,
         name: coin.name,
         short: coin.short,
-        image: item.image,
-        price: item.current_price,
-        basePrice: item.current_price,
-        changePercent: item.price_change_percentage_24h || 0,
-        baseChangePercent: item.price_change_percentage_24h || 0,
-        sparkline: item.sparkline_in_7d ? item.sparkline_in_7d.price.slice(-24) : null
+        price: parseFloat(item.price_usd),
+        basePrice: parseFloat(item.price_usd),
+        changePercent: parseFloat(item.percent_change_24h),
+        baseChangePercent: parseFloat(item.percent_change_24h)
       };
     }).filter(Boolean);
 
@@ -344,15 +292,62 @@ async function loadMarket() {
   }
 }
 
+function renderMarket() {
+  const tbody = document.getElementById('market-body');
+  const highlightRow = document.getElementById('highlight-row');
+  tbody.innerHTML = '';
+  highlightRow.innerHTML = '';
+
+  marketDataCache.forEach(coin => {
+    const up = coin.changePercent >= 0;
+    const iconUrl = 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/' + coin.symbol.toLowerCase() + '.png';
+
+    if (['BTC','ETH','XRP'].includes(coin.symbol)) {
+      const hCard = document.createElement('div');
+      hCard.className = 'highlight-card';
+      hCard.innerHTML = `<div class="name">${coin.short}/USDT</div><div class="price ${up?'change-up':'change-down'}">$${coin.price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>`;
+      highlightRow.appendChild(hCard);
+    }
+
+    const row = document.createElement('tr');
+    row.dataset.symbol = coin.symbol;
+    row.innerHTML = `
+      <td>
+        <div class="coin-name">
+          <img src="${iconUrl}" onerror="this.style.visibility='hidden'">
+          <div>${coin.short}/USDT<div class="coin-sub">${coin.name}</div></div>
+        </div>
+      </td>
+      <td><canvas width="70" height="30" id="chart-${coin.symbol}"></canvas></td>
+      <td>
+        <div class="${up?'change-up':'change-down'} price-cell">${up?'+':''}${coin.changePercent.toFixed(2)}%</div>
+        <div class="price-value">$${coin.price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>
+      </td>`;
+    tbody.appendChild(row);
+
+    // সিমুলেটেড স্পার্কলাইন — দাম থেকে কিছু ডেটা পয়েন্ট তৈরি করি
+    const canvas = document.getElementById('chart-' + coin.symbol);
+    if (canvas) {
+      const prices = [];
+      let p = coin.basePrice * 0.98;
+      for (let i = 0; i < 24; i++) {
+        p = p * (1 + (Math.random() - 0.48) * 0.01);
+        prices.push(p);
+      }
+      drawSparkline(canvas, prices, up);
+    }
+  });
+}
+
+// ★★★ প্রতি ৩ সেকেন্ডে সিমুলেটেড দাম পরিবর্তন ★★★
 function simulateMarketUpdate() {
   if (marketDataCache.length === 0) return;
-
   marketDataCache.forEach(coin => {
     const randomFactor = (Math.random() - 0.5) * 0.001;
     coin.price = coin.basePrice * (1 + randomFactor);
     coin.changePercent = coin.baseChangePercent + (randomFactor * 100);
 
-    const row = document.querySelector(`#market-body tr[data-id="${coin.id}"]`);
+    const row = document.querySelector(`#market-body tr[data-symbol="${coin.symbol}"]`);
     if (row) {
       const priceEl = row.querySelector('.price-value');
       const changeEl = row.querySelector('.price-cell');
@@ -366,7 +361,7 @@ function simulateMarketUpdate() {
   });
 }
 
-// ===== Forex =====
+// ===== Forex (Frankfurter API) =====
 const forexList = [
   { pair: 'EUR/USD', flag: '🇪🇺', base: 'EUR', quote: 'USD' },
   { pair: 'USD/HKD', flag: '🇺🇸', base: 'USD', quote: 'HKD' },
@@ -425,7 +420,7 @@ async function loadForex() {
   }));
 
   if (!anySuccess) {
-    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Could not load forex data (' + lastError + '). Please try again shortly.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Could not load forex data (' + lastError + ').</td></tr>';
     return;
   }
 
@@ -466,10 +461,6 @@ async function loadForex() {
     const canvas = document.getElementById('chart-fx-' + fx.pair.replace('/',''));
     if (canvas && values.length > 1) drawSparkline(canvas, values, up);
   });
-
-  if (tbody.innerHTML === '') {
-    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Could not load forex data. Please try again.</td></tr>';
-  }
 }
 
 // ===== Stocks (Finnhub) =====
@@ -575,8 +566,9 @@ async function loadStocks() {
   }
 }
 
+// ★★★ শুরু করা ★★★
 loadMarket();
-setInterval(loadMarket, 30000);         // আসল ডেটা প্রতি ৩০ সেকেন্ডে
+setInterval(loadMarket, 30000);          // আসল ডেটা প্রতি ৩০ সেকেন্ডে
 setInterval(simulateMarketUpdate, 3000); // সিমুলেটেড আপডেট প্রতি ৩ সেকেন্ডে
 
 setInterval(() => {
