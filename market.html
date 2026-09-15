@@ -6,18 +6,11 @@
 <title>Market - ABC Company</title>
 <style>
   * { box-sizing:border-box; }
-  html {
-    overflow-x:hidden;
-    width:100%;
-  }
+  html { overflow-x:hidden; width:100%; }
   body {
     margin:0; font-family:Arial, sans-serif; background:#0b0e11; color:#eaecef; padding-bottom:70px;
-    overflow-x:hidden;
-    width:100%;
-    max-width:100vw;
-    touch-action:pan-y;
-    overscroll-behavior-x:none;
-    overscroll-behavior-y:contain;
+    overflow-x:hidden; width:100%; max-width:100vw;
+    touch-action:pan-y; overscroll-behavior-x:none; overscroll-behavior-y:contain;
     -webkit-text-size-adjust:100%;
   }
   header { display:flex; align-items:center; justify-content:space-between; padding:16px 20px; }
@@ -69,64 +62,50 @@
   }
   .bottom-nav a { text-decoration:none; }
   .bottom-nav div { text-align:center; color:#848e9c; font-size:11px; cursor:pointer; }
-.bottom-nav div.active { color:#f0b90b; }
-.bottom-nav .ic {
-  font-size:18px; width:38px; height:38px; line-height:38px;
-  margin:0 auto 2px; border-radius:50%; transition:0.2s;
-}
-.bottom-nav div.active .ic {
-  background:rgba(240,185,11,0.15);
-  box-shadow:0 0 0 6px rgba(240,185,11,0.08);
-}
+  .bottom-nav div.active { color:#f0b90b; }
+  .bottom-nav .ic {
+    font-size:18px; width:38px; height:38px; line-height:38px;
+    margin:0 auto 2px; border-radius:50%; transition:0.2s;
+  }
+  .bottom-nav div.active .ic {
+    background:rgba(240,185,11,0.15);
+    box-shadow:0 0 0 6px rgba(240,185,11,0.08);
+  }
 
-/* ===== Fixed header + tabs (স্ক্রল করলেও স্থির থাকবে) ===== */
-#sticky-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  background:#0b0e11;
-}
-#page-content{
-  /* এই padding-top JS দিয়ে সেট হয়, হেডারের আসল উচ্চতা অনুযায়ী */
-}
-
-/* ===== Support menu (headset icon) ===== */
-.support-icon-btn {
-  width:40px; height:40px; border-radius:50%;
-  background:#7C3AED; display:flex; align-items:center; justify-content:center;
-  font-size:20px; cursor:pointer; user-select:none;
-  box-shadow:0 2px 8px rgba(124,58,237,0.45);
-}
-
-/* ===== Notification bell icon ===== */
-.notif-icon-btn {
-  width:40px; height:40px; border-radius:50%;
-  background:#1e2329; display:flex; align-items:center; justify-content:center;
-  font-size:22px; cursor:pointer; user-select:none;
-  color:#eaecef; text-decoration:none;
-}
-.support-menu {
-  position:absolute; top:42px; right:0; background:#1e2329; border:1px solid #2b3139;
-  border-radius:12px; min-width:200px; display:none; flex-direction:column;
-  overflow:hidden; z-index:100; box-shadow:0 8px 20px rgba(0,0,0,0.45);
-}
-.support-menu.show { display:flex; }
-.support-menu button, .support-menu a {
-  display:flex; align-items:center; gap:10px; padding:13px 16px;
-  color:#eaecef; text-decoration:none; background:none; border:none;
-  font-size:14px; cursor:pointer; text-align:left; width:100%; font-family:inherit;
-}
-.support-menu button:hover, .support-menu a:hover { background:#2b3139; }
-.support-menu .menu-divider { height:1px; background:#2b3139; margin:0; }
-.support-menu .menu-ic { font-size:17px; width:20px; text-align:center; display:flex; align-items:center; justify-content:center; }
-.support-menu .menu-ic svg { width:18px; height:18px; display:block; }
-.support-menu a.live-support-item {
-  background:#f0b90b; color:#202630; font-weight:bold;
-  border-radius:8px; margin:8px 8px 4px; width:calc(100% - 16px);
-}
-.support-menu a.live-support-item:hover { background:#d9a70a; }
+  #sticky-top { position:fixed; top:0; left:0; right:0; z-index:1000; background:#0b0e11; }
+  #page-content { }
+  .support-icon-btn {
+    width:40px; height:40px; border-radius:50%;
+    background:#7C3AED; display:flex; align-items:center; justify-content:center;
+    font-size:20px; cursor:pointer; user-select:none;
+    box-shadow:0 2px 8px rgba(124,58,237,0.45);
+  }
+  .notif-icon-btn {
+    width:40px; height:40px; border-radius:50%;
+    background:#1e2329; display:flex; align-items:center; justify-content:center;
+    font-size:22px; cursor:pointer; user-select:none;
+    color:#eaecef; text-decoration:none;
+  }
+  .support-menu {
+    position:absolute; top:42px; right:0; background:#1e2329; border:1px solid #2b3139;
+    border-radius:12px; min-width:200px; display:none; flex-direction:column;
+    overflow:hidden; z-index:100; box-shadow:0 8px 20px rgba(0,0,0,0.45);
+  }
+  .support-menu.show { display:flex; }
+  .support-menu button, .support-menu a {
+    display:flex; align-items:center; gap:10px; padding:13px 16px;
+    color:#eaecef; text-decoration:none; background:none; border:none;
+    font-size:14px; cursor:pointer; text-align:left; width:100%; font-family:inherit;
+  }
+  .support-menu button:hover, .support-menu a:hover { background:#2b3139; }
+  .support-menu .menu-divider { height:1px; background:#2b3139; margin:0; }
+  .support-menu .menu-ic { font-size:17px; width:20px; text-align:center; display:flex; align-items:center; justify-content:center; }
+  .support-menu .menu-ic svg { width:18px; height:18px; display:block; }
+  .support-menu a.live-support-item {
+    background:#f0b90b; color:#202630; font-weight:bold;
+    border-radius:8px; margin:8px 8px 4px; width:calc(100% - 16px);
+  }
+  .support-menu a.live-support-item:hover { background:#d9a70a; }
 </style>
 </head>
 <body>
@@ -193,7 +172,6 @@
 <script>
 let currentTab = 'crypto';
 
-// ====== ফিক্সড হেডারের উচ্চতা মেপে নিচের কনটেন্টে জায়গা দেওয়া (নতুন) ======
 function adjustHeaderOffset(){
   const stickyTop = document.getElementById('sticky-top');
   const pageContent = document.getElementById('page-content');
@@ -204,7 +182,6 @@ function adjustHeaderOffset(){
 window.addEventListener('load', adjustHeaderOffset);
 window.addEventListener('resize', adjustHeaderOffset);
 adjustHeaderOffset();
-// ============================================================================
 
 document.querySelectorAll('.tabs button').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -221,7 +198,7 @@ document.querySelectorAll('.tabs button').forEach(btn => {
   });
 });
 
-// ===== Support menu toggle =====
+// Support menu
 const supportIcon = document.getElementById('support-icon');
 const supportMenu = document.getElementById('support-menu');
 supportIcon.addEventListener('click', (e) => {
@@ -231,48 +208,49 @@ supportIcon.addEventListener('click', (e) => {
 supportMenu.addEventListener('click', (e) => e.stopPropagation());
 document.addEventListener('click', () => supportMenu.classList.remove('show'));
 
+// ★★★ CoinCap API এর জন্য কয়েন লিস্ট (id ফিল্ড) ★★★
 const popularCoins = [
-  { symbol: 'BTCUSDT', name: 'Bitcoin', short: 'BTC', icon: 'btc' },
-  { symbol: 'ETHUSDT', name: 'Ethereum', short: 'ETH', icon: 'eth' },
-  { symbol: 'BNBUSDT', name: 'BNB', short: 'BNB', icon: 'bnb' },
-  { symbol: 'SOLUSDT', name: 'Solana', short: 'SOL', icon: 'sol' },
-  { symbol: 'XRPUSDT', name: 'XRP', short: 'XRP', icon: 'xrp' },
-  { symbol: 'ADAUSDT', name: 'Cardano', short: 'ADA', icon: 'ada' },
-  { symbol: 'DOGEUSDT', name: 'Dogecoin', short: 'DOGE', icon: 'doge' },
-  { symbol: 'TRXUSDT', name: 'TRON', short: 'TRX', icon: 'trx' },
-  { symbol: 'TONUSDT', name: 'Toncoin', short: 'TON', icon: 'ton' },
-  { symbol: 'DOTUSDT', name: 'Polkadot', short: 'DOT', icon: 'dot' },
-  { symbol: 'MATICUSDT', name: 'Polygon', short: 'MATIC', icon: 'matic' },
-  { symbol: 'LTCUSDT', name: 'Litecoin', short: 'LTC', icon: 'ltc' },
-  { symbol: 'SHIBUSDT', name: 'Shiba Inu', short: 'SHIB', icon: 'shib' },
-  { symbol: 'AVAXUSDT', name: 'Avalanche', short: 'AVAX', icon: 'avax' },
-  { symbol: 'LINKUSDT', name: 'Chainlink', short: 'LINK', icon: 'link' },
-  { symbol: 'ATOMUSDT', name: 'Cosmos', short: 'ATOM', icon: 'atom' },
-  { symbol: 'UNIUSDT', name: 'Uniswap', short: 'UNI', icon: 'uni' },
-  { symbol: 'XLMUSDT', name: 'Stellar', short: 'XLM', icon: 'xlm' },
-  { symbol: 'NEARUSDT', name: 'NEAR Protocol', short: 'NEAR', icon: 'near' },
-  { symbol: 'APTUSDT', name: 'Aptos', short: 'APT', icon: 'apt' },
-  { symbol: 'ARBUSDT', name: 'Arbitrum', short: 'ARB', icon: 'arb' },
-  { symbol: 'OPUSDT', name: 'Optimism', short: 'OP', icon: 'op' },
-  { symbol: 'FILUSDT', name: 'Filecoin', short: 'FIL', icon: 'fil' },
-  { symbol: 'ICPUSDT', name: 'Internet Computer', short: 'ICP', icon: 'icp' },
-  { symbol: 'BCHUSDT', name: 'Bitcoin Cash', short: 'BCH', icon: 'bch' },
-  { symbol: 'ALGOUSDT', name: 'Algorand', short: 'ALGO', icon: 'algo' },
-  { symbol: 'VETUSDT', name: 'VeChain', short: 'VET', icon: 'vet' },
-  { symbol: 'SANDUSDT', name: 'The Sandbox', short: 'SAND', icon: 'sand' },
-  { symbol: 'MANAUSDT', name: 'Decentraland', short: 'MANA', icon: 'mana' },
-  { symbol: 'HBARUSDT', name: 'Hedera', short: 'HBAR', icon: 'hbar' },
-  { symbol: 'ETCUSDT', name: 'Ethereum Classic', short: 'ETC', icon: 'etc' },
-  { symbol: 'XMRUSDT', name: 'Monero', short: 'XMR', icon: 'xmr' },
-  { symbol: 'EOSUSDT', name: 'EOS', short: 'EOS', icon: 'eos' },
-  { symbol: 'AAVEUSDT', name: 'Aave', short: 'AAVE', icon: 'aave' },
-  { symbol: 'GRTUSDT', name: 'The Graph', short: 'GRT', icon: 'grt' },
-  { symbol: 'MKRUSDT', name: 'Maker', short: 'MKR', icon: 'mkr' },
-  { symbol: 'QNTUSDT', name: 'Quant', short: 'QNT', icon: 'qnt' },
-  { symbol: 'FTMUSDT', name: 'Fantom', short: 'FTM', icon: 'ftm' },
-  { symbol: 'THETAUSDT', name: 'Theta Network', short: 'THETA', icon: 'theta' },
-  { symbol: 'XTZUSDT', name: 'Tezos', short: 'XTZ', icon: 'xtz' },
-  { symbol: 'EGLDUSDT', name: 'MultiversX', short: 'EGLD', icon: 'egld' }
+  { id: 'bitcoin', name: 'Bitcoin', short: 'BTC', icon: 'btc' },
+  { id: 'ethereum', name: 'Ethereum', short: 'ETH', icon: 'eth' },
+  { id: 'binance-coin', name: 'BNB', short: 'BNB', icon: 'bnb' },
+  { id: 'solana', name: 'Solana', short: 'SOL', icon: 'sol' },
+  { id: 'xrp', name: 'XRP', short: 'XRP', icon: 'xrp' },
+  { id: 'cardano', name: 'Cardano', short: 'ADA', icon: 'ada' },
+  { id: 'dogecoin', name: 'Dogecoin', short: 'DOGE', icon: 'doge' },
+  { id: 'tron', name: 'TRON', short: 'TRX', icon: 'trx' },
+  { id: 'toncoin', name: 'Toncoin', short: 'TON', icon: 'ton' },
+  { id: 'polkadot', name: 'Polkadot', short: 'DOT', icon: 'dot' },
+  { id: 'polygon', name: 'Polygon', short: 'MATIC', icon: 'matic' },
+  { id: 'litecoin', name: 'Litecoin', short: 'LTC', icon: 'ltc' },
+  { id: 'shiba-inu', name: 'Shiba Inu', short: 'SHIB', icon: 'shib' },
+  { id: 'avalanche', name: 'Avalanche', short: 'AVAX', icon: 'avax' },
+  { id: 'chainlink', name: 'Chainlink', short: 'LINK', icon: 'link' },
+  { id: 'cosmos', name: 'Cosmos', short: 'ATOM', icon: 'atom' },
+  { id: 'uniswap', name: 'Uniswap', short: 'UNI', icon: 'uni' },
+  { id: 'stellar', name: 'Stellar', short: 'XLM', icon: 'xlm' },
+  { id: 'near-protocol', name: 'NEAR Protocol', short: 'NEAR', icon: 'near' },
+  { id: 'aptos', name: 'Aptos', short: 'APT', icon: 'apt' },
+  { id: 'arbitrum', name: 'Arbitrum', short: 'ARB', icon: 'arb' },
+  { id: 'optimism', name: 'Optimism', short: 'OP', icon: 'op' },
+  { id: 'filecoin', name: 'Filecoin', short: 'FIL', icon: 'fil' },
+  { id: 'internet-computer', name: 'Internet Computer', short: 'ICP', icon: 'icp' },
+  { id: 'bitcoin-cash', name: 'Bitcoin Cash', short: 'BCH', icon: 'bch' },
+  { id: 'algorand', name: 'Algorand', short: 'ALGO', icon: 'algo' },
+  { id: 'vechain', name: 'VeChain', short: 'VET', icon: 'vet' },
+  { id: 'the-sandbox', name: 'The Sandbox', short: 'SAND', icon: 'sand' },
+  { id: 'decentraland', name: 'Decentraland', short: 'MANA', icon: 'mana' },
+  { id: 'hedera-hashgraph', name: 'Hedera', short: 'HBAR', icon: 'hbar' },
+  { id: 'ethereum-classic', name: 'Ethereum Classic', short: 'ETC', icon: 'etc' },
+  { id: 'monero', name: 'Monero', short: 'XMR', icon: 'xmr' },
+  { id: 'eos', name: 'EOS', short: 'EOS', icon: 'eos' },
+  { id: 'aave', name: 'Aave', short: 'AAVE', icon: 'aave' },
+  { id: 'the-graph', name: 'The Graph', short: 'GRT', icon: 'grt' },
+  { id: 'maker', name: 'Maker', short: 'MKR', icon: 'mkr' },
+  { id: 'quant', name: 'Quant', short: 'QNT', icon: 'qnt' },
+  { id: 'fantom', name: 'Fantom', short: 'FTM', icon: 'ftm' },
+  { id: 'theta-network', name: 'Theta Network', short: 'THETA', icon: 'theta' },
+  { id: 'tezos', name: 'Tezos', short: 'XTZ', icon: 'xtz' },
+  { id: 'multiversx', name: 'MultiversX', short: 'EGLD', icon: 'egld' }
 ];
 
 function drawSparkline(canvas, prices, up) {
@@ -295,22 +273,24 @@ async function loadMarket() {
   const tbody = document.getElementById('market-body');
   const highlightRow = document.getElementById('highlight-row');
   try {
-    const symbolsParam = encodeURIComponent(JSON.stringify(popularCoins.map(c => c.symbol)));
-    const tickerRes = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=' + symbolsParam);
-    const tickers = await tickerRes.json();
+    // CoinCap API থেকে সব asset আনি (একবারে 100+ কয়েন)
+    const res = await fetch('https://api.coincap.io/v2/assets?limit=100');
+    const json = await res.json();
+    const assets = json.data;
 
     tbody.innerHTML = '';
     highlightRow.innerHTML = '';
 
     for (const coin of popularCoins) {
-      const ticker = tickers.find(t => t.symbol === coin.symbol);
-      if (!ticker) continue;
-      const changePercent = parseFloat(ticker.priceChangePercent);
+      const asset = assets.find(a => a.id === coin.id);
+      if (!asset) continue;
+
+      const price = parseFloat(asset.priceUsd);
+      const changePercent = parseFloat(asset.changePercent24Hr);
       const up = changePercent >= 0;
-      const price = parseFloat(ticker.lastPrice);
       const iconUrl = 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/' + coin.icon + '.png';
 
-      if (['BTCUSDT','ETHUSDT','XRPUSDT'].includes(coin.symbol)) {
+      if (['bitcoin','ethereum','xrp'].includes(coin.id)) {
         const hCard = document.createElement('div');
         hCard.className = 'highlight-card';
         hCard.innerHTML = `<div class="name">${coin.short}/USDT</div><div class="price ${up?'change-up':'change-down'}">$${price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>`;
@@ -325,19 +305,23 @@ async function loadMarket() {
             <div>${coin.short}/USDT<div class="coin-sub">${coin.name}</div></div>
           </div>
         </td>
-        <td><canvas width="70" height="30" id="chart-${coin.symbol}"></canvas></td>
+        <td><canvas width="70" height="30" id="chart-${coin.id}"></canvas></td>
         <td>
           <div class="${up?'change-up':'change-down'}">${up?'+':''}${changePercent.toFixed(2)}%</div>
           <div>$${price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>
         </td>`;
       tbody.appendChild(row);
 
-      fetch(`https://api.binance.com/api/v3/klines?symbol=${coin.symbol}&interval=1h&limit=24`)
+      // স্পার্কলাইন চার্টের জন্য CoinCap history (গত ২৪ ঘণ্টা, ১ ঘণ্টা ইন্টারভাল)
+      const end = Date.now();
+      const start = end - 24 * 60 * 60 * 1000;
+      fetch(`https://api.coincap.io/v2/assets/${coin.id}/history?interval=h1&start=${start}&end=${end}`)
         .then(r => r.json())
-        .then(klines => {
-          const prices = klines.map(k => parseFloat(k[4]));
-          prices.push(price); // add the live price so the chart moves with every refresh
-          const canvas = document.getElementById('chart-' + coin.symbol);
+        .then(hist => {
+          if (!hist.data || hist.data.length === 0) return;
+          const prices = hist.data.map(h => parseFloat(h.priceUsd));
+          prices.push(price); // লাইভ প্রাইস শেষে যোগ
+          const canvas = document.getElementById('chart-' + coin.id);
           if (canvas) drawSparkline(canvas, prices, up);
         })
         .catch(() => {});
@@ -347,6 +331,7 @@ async function loadMarket() {
   }
 }
 
+// ===== Forex (অপরিবর্তিত) =====
 const forexList = [
   { pair: 'EUR/USD', flag: '🇪🇺', base: 'EUR', quote: 'USD' },
   { pair: 'USD/HKD', flag: '🇺🇸', base: 'USD', quote: 'HKD' },
@@ -438,182 +423,4 @@ async function loadForex() {
       </td>
       <td><canvas width="70" height="30" id="chart-fx-${fx.pair.replace('/','')}"></canvas></td>
       <td>
-        <div class="${up?'change-up':'change-down'}">${up?'+':''}${changePercent.toFixed(2)}%</div>
-        <div>${latest.toLocaleString(undefined,{maximumFractionDigits:4})}</div>
-      </td>`;
-    tbody.appendChild(row);
-
-    const canvas = document.getElementById('chart-fx-' + fx.pair.replace('/',''));
-    if (canvas && values.length > 1) drawSparkline(canvas, values, up);
-  });
-
-  if (tbody.innerHTML === '') {
-    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Could not load forex data. Please try again.</td></tr>';
-  }
-}
-
-// ==== Put your Finnhub key here ====
-const FINNHUB_API_KEY = 'dafpl19r01quvmmgssp0dafpl19r01quvmmgsspg';
-
-const stockList = [
-  { symbol: 'AAPL', name: 'Apple Inc.', domain: 'apple.com' },
-  { symbol: 'MSFT', name: 'Microsoft', domain: 'microsoft.com' },
-  { symbol: 'GOOGL', name: 'Alphabet (Google)', domain: 'google.com' },
-  { symbol: 'AMZN', name: 'Amazon', domain: 'amazon.com' },
-  { symbol: 'NVDA', name: 'NVIDIA', domain: 'nvidia.com' },
-  { symbol: 'META', name: 'Meta Platforms', domain: 'meta.com' },
-  { symbol: 'TSLA', name: 'Tesla', domain: 'tesla.com' },
-  { symbol: 'AVGO', name: 'Broadcom', domain: 'broadcom.com' },
-  { symbol: 'ORCL', name: 'Oracle', domain: 'oracle.com' },
-  { symbol: 'NFLX', name: 'Netflix', domain: 'netflix.com' },
-  { symbol: 'AMD', name: 'AMD', domain: 'amd.com' },
-  { symbol: 'ADBE', name: 'Adobe', domain: 'adobe.com' },
-  { symbol: 'CRM', name: 'Salesforce', domain: 'salesforce.com' },
-  { symbol: 'INTC', name: 'Intel', domain: 'intel.com' },
-  { symbol: 'CSCO', name: 'Cisco', domain: 'cisco.com' },
-  { symbol: 'PEP', name: 'PepsiCo', domain: 'pepsico.com' },
-  { symbol: 'KO', name: 'Coca-Cola', domain: 'coca-colacompany.com' },
-  { symbol: 'WMT', name: 'Walmart', domain: 'walmart.com' },
-  { symbol: 'DIS', name: 'Walt Disney', domain: 'disney.com' },
-  { symbol: 'BA', name: 'Boeing', domain: 'boeing.com' }
-];
-
-async function fetchStockWithRetry(symbol, retries = 2) {
-  for (let attempt = 0; attempt <= retries; attempt++) {
-    try {
-      const res = await fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${FINNHUB_API_KEY}`);
-      if (res.status === 429) {
-        await new Promise(r => setTimeout(r, 2000 * (attempt + 1)));
-        continue;
-      }
-      if (!res.ok) return null;
-      return await res.json();
-    } catch (err) {
-      await new Promise(r => setTimeout(r, 1000));
-    }
-  }
-  return null;
-}
-
-async function loadStocks() {
-  const tbody = document.getElementById('market-body');
-  const highlightRow = document.getElementById('highlight-row');
-  tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#848e9c;">Loading... (this may take a moment)</td></tr>';
-  highlightRow.innerHTML = '';
-
-  if (!FINNHUB_API_KEY || FINNHUB_API_KEY === 'YOUR_FINNHUB_API_KEY_HERE') {
-    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Please add your Finnhub API key in the code.</td></tr>';
-    return;
-  }
-
-  tbody.innerHTML = '';
-  let shown = 0;
-
-  for (const s of stockList) {
-    const q = await fetchStockWithRetry(s.symbol);
-    if (!q || q.c === undefined || q.c === 0) {
-      await new Promise(r => setTimeout(r, 400));
-      continue;
-    }
-
-    const price = q.c;
-    const changePercent = q.dp ?? 0;
-    const up = changePercent >= 0;
-    const logoUrl = `https://logo.clearbit.com/${s.domain}`;
-
-    if (shown < 3) {
-      const hCard = document.createElement('div');
-      hCard.className = 'highlight-card';
-      hCard.innerHTML = `<div class="name">${s.symbol}</div><div class="price ${up?'change-up':'change-down'}">$${price.toFixed(2)}</div>`;
-      highlightRow.appendChild(hCard);
-    }
-    shown++;
-
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>
-        <div class="coin-name">
-          <img src="${logoUrl}" onerror="this.style.visibility='hidden'">
-          <div>${s.symbol}<div class="coin-sub">${s.name}</div></div>
-        </div>
-      </td>
-      <td><canvas width="70" height="30" id="chart-stock-${s.symbol}"></canvas></td>
-      <td>
-        <div class="${up?'change-up':'change-down'}">${up?'+':''}${changePercent.toFixed(2)}%</div>
-        <div>$${price.toFixed(2)}</div>
-      </td>`;
-    tbody.appendChild(row);
-
-    const canvas = document.getElementById('chart-stock-' + s.symbol);
-    if (canvas) drawSparkline(canvas, [q.pc, q.l, q.o, q.h, q.c], up);
-
-    await new Promise(r => setTimeout(r, 400));
-  }
-
-  if (tbody.innerHTML === '') {
-    tbody.innerHTML = '<tr><td colspan="3" style="text-align:center; color:#f6465d;">Could not load stock data. Please try again shortly.</td></tr>';
-  }
-}
-
-loadMarket();
-setInterval(() => {
-  if (currentTab === 'crypto' || currentTab === 'futures') {
-    loadMarket();
-  }
-}, 3000); // Crypto/Futures refresh every 3 seconds
-
-setInterval(() => {
-  if (currentTab === 'forex') {
-    loadForex();
-  } else if (currentTab === 'stocks') {
-    loadStocks();
-  }
-}, 60000); // Forex/Stocks refresh every 60 seconds
-
-// ==== Notification badge: counts pending Deposits + Withdrawals ====
-const firebaseConfig = {
-  apiKey: "AIzaSyDJoPr8RvE1xkNTKRr5kwTx6E51GCMn_HE",
-  authDomain: "abc-company-6272a.firebaseapp.com",
-  projectId: "abc-company-6272a",
-  storageBucket: "abc-company-6272a.firebasestorage.app",
-  messagingSenderId: "1026212780106",
-  appId: "1:1026212780106:web:985ec1bc35837d6320eeb3"
-};
-firebase.initializeApp(firebaseConfig);
-
-let pendingDeposits = 0;
-let pendingWithdrawals = 0;
-
-function updateNotifBadge() {
-  const badge = document.getElementById('notif-badge');
-  if (!badge) return;
-  const total = pendingDeposits + pendingWithdrawals;
-  badge.textContent = total;
-  badge.classList.toggle('show', total > 0);
-}
-
-firebase.auth().onAuthStateChanged(user => {
-  if (!user) return; // not logged in: no badge, notifications.html itself will redirect to login
-
-  const db = firebase.firestore();
-
-  db.collection('deposits')
-    .where('uid', '==', user.uid)
-    .where('status', '==', 'pending')
-    .onSnapshot(snap => {
-      pendingDeposits = snap.size;
-      updateNotifBadge();
-    });
-
-  db.collection('withdrawals')
-    .where('uid', '==', user.uid)
-    .where('status', '==', 'pending')
-    .onSnapshot(snap => {
-      pendingWithdrawals = snap.size;
-      updateNotifBadge();
-    });
-});
-</script>
-
-</body>
-</html>
+        <div class="${up?'change-up':'change-down
