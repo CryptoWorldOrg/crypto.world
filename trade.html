@@ -9,14 +9,8 @@
   body { margin:0; font-family:Arial, sans-serif; background:#0b0e11; color:#eaecef; padding-bottom:70px; }
   header { display:flex; align-items:center; justify-content:center; padding:16px 20px; position:relative; }
   header h1 { font-size:20px; margin:0; color:#f0b90b; }
-  .back-btn {
-    position:absolute; left:16px; top:50%; transform:translateY(-50%);
-    background:none; border:none; color:#eaecef; font-size:20px; cursor:pointer;
-  }
-  #coin-list-view .coin-row {
-    display:flex; align-items:center; justify-content:space-between;
-    padding:14px 16px; border-bottom:1px solid #1e2329; cursor:pointer;
-  }
+  .back-btn { position:absolute; left:16px; top:50%; transform:translateY(-50%); background:none; border:none; color:#eaecef; font-size:20px; cursor:pointer; }
+  #coin-list-view .coin-row { display:flex; align-items:center; justify-content:space-between; padding:14px 16px; border-bottom:1px solid #1e2329; cursor:pointer; }
   #coin-list-view .coin-row:active { background:#1e2329; }
   .coin-left { display:flex; align-items:center; gap:10px; }
   .coin-left img { width:28px; height:28px; border-radius:50%; }
@@ -28,14 +22,6 @@
   .change-down { color:#f6465d; }
 
   #chart-view { display:none; padding:16px; }
-
-  .demo-banner {
-    background:rgba(240,185,11,0.12); border:1px solid #f0b90b; color:#f0b90b;
-    padding:10px 14px; border-radius:8px; text-align:center; font-weight:bold;
-    font-size:13px; margin-bottom:12px;
-  }
-  .demo-banner span { display:block; font-weight:normal; font-size:11px; color:#c9a13a; margin-top:2px; }
-
   .chart-header { display:flex; align-items:center; gap:10px; margin-bottom:8px; }
   .chart-header img { width:26px; height:26px; border-radius:50%; }
   .chart-header .pair-name { font-weight:bold; font-size:18px; }
@@ -44,161 +30,64 @@
   .price-row .big-price { font-size:22px; font-weight:bold; }
   .ohlc-grid { display:grid; grid-template-columns:1fr 1fr; gap:6px 20px; margin-bottom:14px; font-size:13px; color:#848e9c; }
   .ohlc-grid span.val { color:#eaecef; font-weight:bold; }
-  .interval-select {
-    background:#1e2329; color:#eaecef; border:1px solid #2b3139; border-radius:6px;
-    padding:6px 10px; margin-left:auto; cursor:pointer;
-  }
+  .interval-select { background:#1e2329; color:#eaecef; border:1px solid #2b3139; border-radius:6px; padding:6px 10px; margin-left:auto; cursor:pointer; }
   canvas#candles { width:100%; height:190px; display:block; }
   canvas#volume { width:100%; height:45px; display:block; margin-top:4px; }
   .time-labels { display:flex; justify-content:space-between; font-size:11px; color:#848e9c; margin-top:4px; }
 
   .duration-row { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; margin-top:16px; }
-  .duration-box {
-    background:#1e2329; border:1px solid #2b3139; border-radius:8px;
-    padding:12px 4px; text-align:center; cursor:pointer; transition:0.15s;
-  }
+  .duration-box { background:#1e2329; border:1px solid #2b3139; border-radius:8px; padding:12px 4px; text-align:center; cursor:pointer; transition:0.15s; }
   .duration-box:active { transform:scale(0.97); }
   .duration-box.selected { border-color:#f0b90b; background:rgba(240,185,11,0.1); }
   .duration-time { font-size:17px; font-weight:bold; color:#f0b90b; }
   .duration-return { font-size:10px; color:#848e9c; margin-top:4px; line-height:1.3; }
 
-  .chart-visual {
-    max-height:500px;
-    opacity:1;
-    overflow:hidden;
-    transition:max-height 0.45s ease, opacity 0.35s ease, margin-top 0.45s ease;
-  }
-    .chart-visual.collapsed {
-    max-height:0;
-    opacity:0;
-    margin-top:0;
-  }
-  .invest-section {
-    margin-top:40px;
-    max-height:0;
-    opacity:0;
-    transform:translateY(24px);
-    overflow:hidden;
-    transition:max-height 0.45s ease, opacity 0.35s ease, transform 0.4s ease, margin-top 0.45s ease;
-  }
-  .invest-section.show {
-    max-height:600px;
-    opacity:1;
-    transform:translateY(0);
-  }
+  .chart-visual { max-height:500px; opacity:1; overflow:hidden; transition:max-height 0.45s ease, opacity 0.35s ease, margin-top 0.45s ease; }
+  .chart-visual.collapsed { max-height:0; opacity:0; margin-top:0; }
+  .invest-section { margin-top:40px; max-height:0; opacity:0; transform:translateY(24px); overflow:hidden; transition:max-height 0.45s ease, opacity 0.35s ease, transform 0.4s ease, margin-top 0.45s ease; }
+  .invest-section.show { max-height:600px; opacity:1; transform:translateY(0); }
   .amount-box { display:flex; align-items:center; gap:8px; }
-  .amount-box input {
-  flex:1; min-width:0; width:100%;
-  text-align:center; font-size:18px; font-weight:bold;
-  background:#1e2329; border:1px solid #2b3139; color:#eaecef;
-  padding:12px; border-radius:8px;
-  -moz-appearance:textfield;
-}
-.amount-box input::-webkit-outer-spin-button,
-.amount-box input::-webkit-inner-spin-button {
-  -webkit-appearance:none;
-  margin:0;
-}
+  .amount-box input { flex:1; min-width:0; width:100%; text-align:center; font-size:18px; font-weight:bold; background:#1e2329; border:1px solid #2b3139; color:#eaecef; padding:12px; border-radius:8px; -moz-appearance:textfield; }
+  .amount-box input::-webkit-outer-spin-button, .amount-box input::-webkit-inner-spin-button { -webkit-appearance:none; margin:0; }
   .amount-box input::placeholder { color:#5b6169; font-weight:normal; font-size:14px; }
-  .amt-btn {
-    width:44px; height:44px; border-radius:8px; border:1px solid #2b3139;
-    background:#1e2329; color:#eaecef; font-size:20px; cursor:pointer; flex-shrink:0;
-  }
+  .amt-btn { width:44px; height:44px; border-radius:8px; border:1px solid #2b3139; background:#1e2329; color:#eaecef; font-size:20px; cursor:pointer; flex-shrink:0; }
   .amt-btn:active { background:#2b3139; }
   .amount-range { text-align:center; font-size:12px; color:#848e9c; margin-top:6px; }
   .amount-error { text-align:center; font-size:12px; color:#f6465d; margin-top:4px; min-height:14px; }
 
-  .balance-display {
-    text-align:center; font-size:13px; font-weight:bold; color:#f0b90b;
-    border:1px solid #f0b90b; border-radius:6px; padding:8px 10px;
-    margin-top:8px; background:rgba(240,185,11,0.08);
-  }
+  .balance-display { text-align:center; font-size:13px; font-weight:bold; color:#f0b90b; border:1px solid #f0b90b; border-radius:6px; padding:8px 10px; margin-top:8px; background:rgba(240,185,11,0.08); }
 
   .direction-row { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:14px; }
-  .down-btn, .up-btn {
-    padding:14px; border-radius:8px; font-weight:bold; font-size:15px; cursor:pointer;
-  }
+  .down-btn, .up-btn { padding:14px; border-radius:8px; font-weight:bold; font-size:15px; cursor:pointer; }
   .down-btn { background:rgba(246,70,93,0.12); border:1px solid #f6465d; color:#f6465d; }
   .up-btn { background:rgba(14,203,129,0.12); border:1px solid #0ecb81; color:#0ecb81; }
   .down-btn:disabled, .up-btn:disabled { opacity:0.4; cursor:not-allowed; }
 
-  .bottom-nav {
-    position:fixed; bottom:0; left:0; right:0; background:#161a1e;
-    display:flex; justify-content:space-around; padding:10px 0;
-    border-top:1px solid #2b3139;
-  }
+  .bottom-nav { position:fixed; bottom:0; left:0; right:0; background:#161a1e; display:flex; justify-content:space-around; padding:10px 0; border-top:1px solid #2b3139; }
   .bottom-nav a { text-decoration:none; }
   .bottom-nav div { text-align:center; color:#848e9c; font-size:11px; cursor:pointer; }
   .bottom-nav div.active { color:#f0b90b; }
-  .bottom-nav .ic {
-    font-size:18px; width:38px; height:38px; line-height:38px;
-    margin:0 auto 2px; border-radius:50%; transition:0.2s;
-  }
-  .bottom-nav div.active .ic {
-    background:rgba(240,185,11,0.15);
-    box-shadow:0 0 0 6px rgba(240,185,11,0.08);
-  }
+  .bottom-nav .ic { font-size:18px; width:38px; height:38px; line-height:38px; margin:0 auto 2px; border-radius:50%; transition:0.2s; }
+  .bottom-nav div.active .ic { background:rgba(240,185,11,0.15); box-shadow:0 0 0 6px rgba(240,185,11,0.08); }
 
-  /* ---------- Trade result popup (matches the ethusdt card screenshots) ---------- */
-  .tm-overlay {
-    display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6);
-    align-items:center; justify-content:center; z-index:9999; padding:20px;
-  }
+  .tm-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); align-items:center; justify-content:center; z-index:9999; padding:20px; }
   .tm-overlay.active { display:flex; }
-  .tm-card {
-    width:100%; max-width:320px; background:linear-gradient(160deg,#1e5fe0,#0f3fae);
-    border-radius:22px; padding:28px 22px; text-align:center; color:#fff;
-    box-shadow:0 12px 40px rgba(0,0,0,0.5);
-  }
+  .tm-card { width:100%; max-width:320px; background:linear-gradient(160deg,#1e5fe0,#0f3fae); border-radius:22px; padding:28px 22px; text-align:center; color:#fff; box-shadow:0 12px 40px rgba(0,0,0,0.5); }
   .tm-title { font-size:19px; font-weight:bold; margin-bottom:18px; }
-  .tm-timer-circle {
-    width:72px; height:72px; border-radius:50%; border:3px solid #f0b90b;
-    display:flex; align-items:center; justify-content:center;
-    margin:0 auto 20px; font-weight:bold; font-size:16px; color:#f0b90b;
-  }
+  .tm-timer-circle { width:72px; height:72px; border-radius:50%; border:3px solid #f0b90b; display:flex; align-items:center; justify-content:center; margin:0 auto 20px; font-weight:bold; font-size:16px; color:#f0b90b; }
   .tm-result { font-size:28px; font-weight:bold; margin-bottom:18px; display:none; }
   .tm-rows { text-align:left; margin-bottom:14px; }
-  .tm-row {
-    display:flex; justify-content:space-between; padding:7px 0;
-    font-size:13.5px; color:#c9d6f5; border-bottom:1px solid rgba(255,255,255,0.08);
-  }
+  .tm-row { display:flex; justify-content:space-between; padding:7px 0; font-size:13.5px; color:#c9d6f5; border-bottom:1px solid rgba(255,255,255,0.08); }
   .tm-row:last-child { border-bottom:none; }
   .tm-row span:last-child { color:#fff; font-weight:bold; }
-  .tm-order-number {
-    font-size:11px; color:#9fb3e6; word-break:break-all; margin-top:10px;
-  }
-  .tm-again-btn {
-    display:none; margin-top:18px; width:100%; padding:13px; border:none;
-    border-radius:24px; background:#eef3ff; color:#1a4fce; font-weight:bold;
-    font-size:14px; cursor:pointer;
-  }
-    .tm-again-btn:active { background:#d9e4ff; }
+  .tm-order-number { font-size:11px; color:#9fb3e6; word-break:break-all; margin-top:10px; }
+  .tm-again-btn { display:none; margin-top:18px; width:100%; padding:13px; border:none; border-radius:24px; background:#eef3ff; color:#1a4fce; font-weight:bold; font-size:14px; cursor:pointer; }
+  .tm-again-btn:active { background:#d9e4ff; }
 
-  .welcome-loading {
-    display:flex; align-items:center; justify-content:center;
-    height:60vh; text-align:center; padding:20px;
-    position:relative; overflow:hidden;
-  }
-  .candle-bg {
-    position:absolute; inset:0;
-    display:flex; align-items:center; justify-content:center;
-    gap:14px;
-    z-index:0; opacity:0.55; pointer-events:none;
-  }
-  .candle-bar {
-    width:22px;
-    border:2px solid #fff;
-    border-radius:3px;
-    position:relative;
-    animation: candlePulse 1.8s ease-in-out infinite;
-  }
-  .candle-bar::before {
-    content:'';
-    position:absolute; left:50%; top:-16px; bottom:-16px;
-    width:2px; background:#fff;
-    transform:translateX(-50%);
-    z-index:-1;
-  }
+  .welcome-loading { display:flex; align-items:center; justify-content:center; height:60vh; text-align:center; padding:20px; position:relative; overflow:hidden; }
+  .candle-bg { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; gap:14px; z-index:0; opacity:0.55; pointer-events:none; }
+  .candle-bar { width:22px; border:2px solid #fff; border-radius:3px; position:relative; animation: candlePulse 1.8s ease-in-out infinite; }
+  .candle-bar::before { content:''; position:absolute; left:50%; top:-16px; bottom:-16px; width:2px; background:#fff; transform:translateX(-50%); z-index:-1; }
   .candle-bar.up { background:#0ecb81; }
   .candle-bar.down { background:#f6465d; }
   .candle-bar:nth-child(1) { animation-delay:0s; }
@@ -211,30 +100,11 @@
   .candle-bar:nth-child(8) { animation-delay:1.75s; }
   .candle-bar:nth-child(9) { animation-delay:2s; }
   .candle-bar:nth-child(10) { animation-delay:2.25s; }
-  @keyframes candlePulse {
-    0%, 100% { height:60px; }
-    50% { height:150px; }
-  }
-  .welcome-loading .typing-text,
-  .welcome-loading .typing-cursor {
-    position:relative;
-    z-index:1;
-  }
-  .typing-text {
-  font-size:28px; font-weight:900; color:#f0b90b;
-  display:inline-block;
-  white-space:pre;
-}
-.typing-cursor {
-  display:inline-block;
-  width:3px;
-  background:#f0b90b;
-  margin-left:2px;
-  animation: blinkCursor 0.6s step-end infinite;
-}
-@keyframes blinkCursor {
-  50% { opacity:0; }
-}
+  @keyframes candlePulse { 0%, 100% { height:60px; } 50% { height:150px; } }
+  .welcome-loading .typing-text, .welcome-loading .typing-cursor { position:relative; z-index:1; }
+  .typing-text { font-size:28px; font-weight:900; color:#f0b90b; display:inline-block; white-space:pre; }
+  .typing-cursor { display:inline-block; width:3px; background:#f0b90b; margin-left:2px; animation: blinkCursor 0.6s step-end infinite; }
+  @keyframes blinkCursor { 50% { opacity:0; } }
 </style>
 </head>
 <body>
@@ -277,14 +147,11 @@
   <div class="chart-header">
     <img id="chart-icon" src="" alt="">
     <span class="pair-name" id="chart-pair"></span>
-   <select class="interval-select" id="interval-select">
-  <option value="1m">1min</option>
-  <option value="5m">5min</option>
-  <option value="15m" selected>15min</option>
-  <option value="1h">1hour</option>
-  <option value="4h">4hour</option>
-  <option value="1d">1day</option>
-</select>
+    <select class="interval-select" id="interval-select">
+      <option value="1h">1hour</option>
+      <option value="4h">4hour</option>
+      <option value="1d" selected>1day</option>
+    </select>
   </div>
   <div class="chart-card">
     <div class="price-row">
@@ -331,14 +198,11 @@
   <a href="profile.html"><div><div class="ic">&#128100;</div>Profile</div></a>
 </div>
 
-<!-- ---------- Trade popup card ---------- -->
 <div class="tm-overlay" id="trade-modal-overlay">
   <div class="tm-card">
     <div class="tm-title" id="tm-title">ethusdt</div>
-
     <div class="tm-timer-circle" id="tm-timer-circle"><span id="tm-timer-text">60s</span></div>
     <div class="tm-result" id="tm-result"></div>
-
     <div class="tm-rows">
       <div class="tm-row"><span>Open price</span><span id="tm-open">-</span></div>
       <div class="tm-row"><span>Last price:</span><span id="tm-last">-</span></div>
@@ -346,9 +210,7 @@
       <div class="tm-row"><span>Fee:</span><span id="tm-fee">-</span></div>
       <div class="tm-row"><span>Expected return:</span><span id="tm-return">-</span></div>
     </div>
-
     <div class="tm-order-number" id="tm-order-number">Order number: -</div>
-
     <button class="tm-again-btn" id="tm-again-btn">Order again</button>
   </div>
 </div>
@@ -367,80 +229,66 @@ const firebaseConfig = {
 };
 firebase.initializeApp(firebaseConfig);
 
-// ---------- Real balance (Firestore, synced with profile.html) ----------
+// ---------- Real balance ----------
 let currentUser = null;
 let currentBalance = 0;
 
-function getBalance() {
-  return currentBalance;
-}
-
+function getBalance() { return currentBalance; }
 function updateBalanceDisplay() {
   const el = document.getElementById('balance-display');
   if (el) el.textContent = `Est. Total Value: ${currentBalance.toFixed(2)} USDT`;
 }
-
-// Sets the balance in Firestore to an exact new value.
-// currentBalance itself is updated automatically by the onSnapshot listener below.
 function setBalance(newVal) {
   if (!currentUser) return;
-  firebase.firestore().collection('users').doc(currentUser.uid).update({
-    balance: newVal
-  }).catch(err => console.error('Balance update failed:', err));
+  firebase.firestore().collection('users').doc(currentUser.uid).update({ balance: newVal })
+    .catch(err => console.error('Balance update failed:', err));
 }
-
 firebase.auth().onAuthStateChanged(user => {
-  if (!user) {
-    window.location.href = 'login.html';
-    return;
-  }
+  if (!user) { window.location.href = 'login.html'; return; }
   currentUser = user;
-  firebase.firestore().collection('users').doc(user.uid)
-    .onSnapshot(doc => {
-      if (doc.exists) {
-        const data = doc.data();
-        currentBalance = data.balance || 0;
-        updateBalanceDisplay();
-      }
-    });
+  firebase.firestore().collection('users').doc(user.uid).onSnapshot(doc => {
+    if (doc.exists) {
+      const data = doc.data();
+      currentBalance = data.balance || 0;
+      updateBalanceDisplay();
+    }
+  });
 });
 
+// ★★★ CoinGecko-এর জন্য কয়েন লিস্ট ★★★
 const coinList = [
-  { symbol: 'BTCUSDT', name: 'Bitcoin', short: 'BTC', icon: 'btc' },
-  { symbol: 'ETHUSDT', name: 'Ethereum', short: 'ETH', icon: 'eth' },
-  { symbol: 'BNBUSDT', name: 'BNB', short: 'BNB', icon: 'bnb' },
-  { symbol: 'SOLUSDT', name: 'Solana', short: 'SOL', icon: 'sol' },
-  { symbol: 'XRPUSDT', name: 'XRP', short: 'XRP', icon: 'xrp' },
-  { symbol: 'ADAUSDT', name: 'Cardano', short: 'ADA', icon: 'ada' },
-  { symbol: 'DOGEUSDT', name: 'Dogecoin', short: 'DOGE', icon: 'doge' },
-  { symbol: 'TRXUSDT', name: 'TRON', short: 'TRX', icon: 'trx' },
-  { symbol: 'TONUSDT', name: 'Toncoin', short: 'TON', icon: 'ton' },
-  { symbol: 'DOTUSDT', name: 'Polkadot', short: 'DOT', icon: 'dot' },
-  { symbol: 'POLUSDT', name: 'Polygon', short: 'POL', icon: 'matic' },
-  { symbol: 'LTCUSDT', name: 'Litecoin', short: 'LTC', icon: 'ltc' },
-  { symbol: 'SHIBUSDT', name: 'Shiba Inu', short: 'SHIB', icon: 'shib' },
-  { symbol: 'AVAXUSDT', name: 'Avalanche', short: 'AVAX', icon: 'avax' },
-  { symbol: 'LINKUSDT', name: 'Chainlink', short: 'LINK', icon: 'link' },
-  { symbol: 'ATOMUSDT', name: 'Cosmos', short: 'ATOM', icon: 'atom' },
-  { symbol: 'UNIUSDT', name: 'Uniswap', short: 'UNI', icon: 'uni' },
-  { symbol: 'XLMUSDT', name: 'Stellar', short: 'XLM', icon: 'xlm' },
-  { symbol: 'NEARUSDT', name: 'NEAR Protocol', short: 'NEAR', icon: 'near' },
-  { symbol: 'APTUSDT', name: 'Aptos', short: 'APT', icon: 'apt' },
-  { symbol: 'ARBUSDT', name: 'Arbitrum', short: 'ARB', icon: 'arb' },
-  { symbol: 'OPUSDT', name: 'Optimism', short: 'OP', icon: 'op' },
-  { symbol: 'FILUSDT', name: 'Filecoin', short: 'FIL', icon: 'fil' },
-  { symbol: 'ICPUSDT', name: 'Internet Computer', short: 'ICP', icon: 'icp' },
-  { symbol: 'BCHUSDT', name: 'Bitcoin Cash', short: 'BCH', icon: 'bch' },
-  { symbol: 'ALGOUSDT', name: 'Algorand', short: 'ALGO', icon: 'algo' },
-  { symbol: 'VETUSDT', name: 'VeChain', short: 'VET', icon: 'vet' },
-  { symbol: 'SANDUSDT', name: 'The Sandbox', short: 'SAND', icon: 'sand' },
-  { symbol: 'MANAUSDT', name: 'Decentraland', short: 'MANA', icon: 'mana' },
-  { symbol: 'HBARUSDT', name: 'Hedera', short: 'HBAR', icon: 'hbar' }
+  { id: 'bitcoin', name: 'Bitcoin', short: 'BTC' },
+  { id: 'ethereum', name: 'Ethereum', short: 'ETH' },
+  { id: 'binancecoin', name: 'BNB', short: 'BNB' },
+  { id: 'solana', name: 'Solana', short: 'SOL' },
+  { id: 'ripple', name: 'XRP', short: 'XRP' },
+  { id: 'cardano', name: 'Cardano', short: 'ADA' },
+  { id: 'dogecoin', name: 'Dogecoin', short: 'DOGE' },
+  { id: 'tron', name: 'TRON', short: 'TRX' },
+  { id: 'the-open-network', name: 'Toncoin', short: 'TON' },
+  { id: 'polkadot', name: 'Polkadot', short: 'DOT' },
+  { id: 'matic-network', name: 'Polygon', short: 'MATIC' },
+  { id: 'litecoin', name: 'Litecoin', short: 'LTC' },
+  { id: 'shiba-inu', name: 'Shiba Inu', short: 'SHIB' },
+  { id: 'avalanche-2', name: 'Avalanche', short: 'AVAX' },
+  { id: 'chainlink', name: 'Chainlink', short: 'LINK' },
+  { id: 'cosmos', name: 'Cosmos', short: 'ATOM' },
+  { id: 'uniswap', name: 'Uniswap', short: 'UNI' },
+  { id: 'stellar', name: 'Stellar', short: 'XLM' },
+  { id: 'near', name: 'NEAR Protocol', short: 'NEAR' },
+  { id: 'aptos', name: 'Aptos', short: 'APT' },
+  { id: 'arbitrum', name: 'Arbitrum', short: 'ARB' },
+  { id: 'optimism', name: 'Optimism', short: 'OP' },
+  { id: 'filecoin', name: 'Filecoin', short: 'FIL' },
+  { id: 'internet-computer', name: 'Internet Computer', short: 'ICP' },
+  { id: 'bitcoin-cash', name: 'Bitcoin Cash', short: 'BCH' },
+  { id: 'algorand', name: 'Algorand', short: 'ALGO' },
+  { id: 'vechain', name: 'VeChain', short: 'VET' },
+  { id: 'the-sandbox', name: 'The Sandbox', short: 'SAND' },
+  { id: 'decentraland', name: 'Decentraland', short: 'MANA' },
+  { id: 'hedera-hashgraph', name: 'Hedera', short: 'HBAR' }
 ];
 
-// Duration options with their amount ranges and step sizes.
-// This is the fallback/default — loadTradeConfig() will overwrite it with
-// whatever the admin panel has saved to Firestore (settings/tradeConfig).
 let durationList = [
   { seconds: 60,  returnPct: 20.00, min: 100,    max: 9999,     step: 100   },
   { seconds: 120, returnPct: 25.00, min: 10000,  max: 49999,    step: 1000  },
@@ -448,13 +296,10 @@ let durationList = [
   { seconds: 300, returnPct: 50.00, min: 100000, max: 5000000,  step: 10000 },
   { seconds: 600, returnPct: 85.00, min: 100000, max: Infinity, step: 10000 }
 ];
-
-// Fee rate applied on every trade (0.2 USD fee on a 100 USD stake = 0.2%)
 const FEE_RATE = 0.002;
-
 let selectedDuration = null;
+let currentPriceCache = {}; // id → ডেটা
 
-// ---------- Load duration/return% config from Firestore (editable via admin panel) ----------
 async function loadTradeConfig() {
   try {
     const doc = await firebase.firestore().collection('settings').doc('tradeConfig').get();
@@ -467,7 +312,6 @@ async function loadTradeConfig() {
         step: d.step
       }));
     } else {
-      // First run ever: seed Firestore with the default list so the admin panel has something to edit.
       const seedData = durationList.map(d => ({ ...d, max: d.max === Infinity ? null : d.max }));
       await firebase.firestore().collection('settings').doc('tradeConfig').set({ durations: seedData });
     }
@@ -476,7 +320,6 @@ async function loadTradeConfig() {
   }
 }
 
-// ---------- Duration boxes ----------
 function renderDurationBoxes() {
   const row = document.getElementById('duration-row');
   row.innerHTML = '';
@@ -531,28 +374,18 @@ function adjustAmount(dir) {
 function validateAmount() {
   const errorEl = document.getElementById('amount-error');
   errorEl.textContent = '';
-  if (!selectedDuration) {
-    errorEl.textContent = 'Please select a duration first.';
-    return null;
-  }
+  if (!selectedDuration) { errorEl.textContent = 'Please select a duration first.'; return null; }
   const input = document.getElementById('amount-input');
   const val = parseFloat(input.value);
-  if (isNaN(val) || val <= 0) {
-    errorEl.textContent = 'Please enter a number.';
-    return null;
-  }
+  if (isNaN(val) || val <= 0) { errorEl.textContent = 'Please enter a number.'; return null; }
   if (val < selectedDuration.min || (selectedDuration.max !== Infinity && val > selectedDuration.max)) {
     errorEl.textContent = `Amount must be between ${selectedDuration.min.toLocaleString()}${selectedDuration.max !== Infinity ? ' and ' + selectedDuration.max.toLocaleString() : '+'}.`;
     return null;
   }
-  if (val > getBalance()) {
-    errorEl.textContent = 'Insufficient balance.';
-    return null;
-  }
+  if (val > getBalance()) { errorEl.textContent = 'Insufficient balance.'; return null; }
   return val;
 }
 
-// ---------- Coin list / chart view switching ----------
 const listView = document.getElementById('coin-list-view');
 const chartView = document.getElementById('chart-view');
 const backBtn = document.getElementById('back-btn');
@@ -563,11 +396,10 @@ let currentSymbol = null;
 let refreshTimer = null;
 let priceRefreshTimer = null;
 let tradeInProgress = false;
+let currentKlines = null; // শেষ ক্যান্ডেলস্টিক ডেটা (সিমুলেশনের জন্য)
+let simulatedTimer = null;
 
-function iconUrl(icon) {
-  return 'https://cdn.jsdelivr.net/gh/spothq/cryptocurrency-icons@master/128/color/' + icon + '.png';
-}
-
+// ★★★ কয়েন লিস্ট (CoinGecko) ★★★
 async function loadCoinList() {
   listView.innerHTML = `<div class="welcome-loading">
     <div class="candle-bg">
@@ -585,74 +417,99 @@ async function loadCoinList() {
     <span class="typing-text">Welcome Smart Trading</span>
   </div>`;
   try {
-        const minDelay = new Promise(resolve => setTimeout(resolve, 2000));
-    const symbolsParam = encodeURIComponent(JSON.stringify(coinList.map(c => c.symbol)));
-    const fetchData = fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=' + symbolsParam)
+    const minDelay = new Promise(resolve => setTimeout(resolve, 2000));
+    const ids = coinList.map(c => c.id).join(',');
+    const fetchData = fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&sparkline=false&price_change_percentage=24h`)
       .then(res => res.json());
-    const [tickers] = await Promise.all([fetchData, minDelay]);
+    const [data] = await Promise.all([fetchData, minDelay]);
+
     listView.innerHTML = '';
 
-    coinList.forEach(coin => {
-      const t = tickers.find(x => x.symbol === coin.symbol);
-      if (!t) return;
-      const changePercent = parseFloat(t.priceChangePercent);
-      const up = changePercent >= 0;
-      const price = parseFloat(t.lastPrice);
+    data.forEach(item => {
+      const coin = coinList.find(c => c.id === item.id);
+      if (!coin) return;
 
+      currentPriceCache[coin.id] = {
+        price: item.current_price,
+        basePrice: item.current_price,
+        changePercent: item.price_change_percentage_24h || 0,
+        baseChangePercent: item.price_change_percentage_24h || 0,
+        image: item.image
+      };
+
+      const up = (item.price_change_percentage_24h || 0) >= 0;
       const row = document.createElement('div');
       row.className = 'coin-row';
+      row.dataset.id = coin.id;
       row.innerHTML = `
         <div class="coin-left">
-          <img src="${iconUrl(coin.icon)}" onerror="this.style.visibility='hidden'">
+          <img src="${item.image}" onerror="this.style.visibility='hidden'">
           <div>
             <div class="coin-name">${coin.short}/USDT</div>
             <div class="coin-sub">${coin.name}</div>
           </div>
         </div>
         <div class="coin-right">
-          <div class="coin-price" id="price-${coin.symbol}">$${price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>
-          <div class="${up?'change-up':'change-down'}" id="change-${coin.symbol}">${up?'+':''}${changePercent.toFixed(2)}%</div>
+          <div class="coin-price" id="price-${coin.id}">$${item.current_price.toLocaleString(undefined,{maximumFractionDigits:4})}</div>
+          <div class="${up?'change-up':'change-down'}" id="change-${coin.id}">${up?'+':''}${(item.price_change_percentage_24h || 0).toFixed(2)}%</div>
         </div>`;
       row.addEventListener('click', () => openChart(coin));
       listView.appendChild(row);
     });
 
-    // Start the smooth, in-place price refresh only after the initial list has rendered.
     clearInterval(priceRefreshTimer);
-    priceRefreshTimer = setInterval(refreshCoinPrices, 2000);
+    priceRefreshTimer = setInterval(refreshCoinPrices, 30000); // আসল ডেটা প্রতি ৩০ সেকেন্ডে
+    setInterval(simulateCoinListPrices, 3000); // সিমুলেটেড প্রতি ৩ সেকেন্ডে
   } catch (err) {
+    console.error(err);
     listView.innerHTML = '<p style="text-align:center;color:#f6465d;padding:20px;">Could not load coin list.</p>';
   }
 }
 
-// Updates only the price/percentage text of each row already on screen.
-// No innerHTML rebuild, no loading screen — avoids the flicker.
+// ★★★ প্রতি ৩০ সেকেন্ডে আসল দাম ★★★
 async function refreshCoinPrices() {
-  // Don't refresh the list while the user is looking at a coin's chart page.
   if (listView.style.display === 'none') return;
   try {
-    const symbolsParam = encodeURIComponent(JSON.stringify(coinList.map(c => c.symbol)));
-    const res = await fetch('https://api.binance.com/api/v3/ticker/24hr?symbols=' + symbolsParam);
-    const tickers = await res.json();
+    const ids = coinList.map(c => c.id).join(',');
+    const res = await fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids=${ids}&order=market_cap_desc&sparkline=false&price_change_percentage=24h`);
+    const data = await res.json();
 
-    coinList.forEach(coin => {
-      const t = tickers.find(x => x.symbol === coin.symbol);
-      if (!t) return;
-      const priceEl = document.getElementById('price-' + coin.symbol);
-      const changeEl = document.getElementById('change-' + coin.symbol);
-      if (!priceEl || !changeEl) return; // row not rendered (e.g. list failed earlier)
-
-      const changePercent = parseFloat(t.priceChangePercent);
-      const up = changePercent >= 0;
-      const price = parseFloat(t.lastPrice);
-
-      priceEl.textContent = '$' + price.toLocaleString(undefined,{maximumFractionDigits:4});
-      changeEl.textContent = (up?'+':'') + changePercent.toFixed(2) + '%';
-      changeEl.className = up ? 'change-up' : 'change-down';
+    data.forEach(item => {
+      if (currentPriceCache[item.id]) {
+        currentPriceCache[item.id].price = item.current_price;
+        currentPriceCache[item.id].basePrice = item.current_price;
+        currentPriceCache[item.id].changePercent = item.price_change_percentage_24h || 0;
+        currentPriceCache[item.id].baseChangePercent = item.price_change_percentage_24h || 0;
+      }
     });
-  } catch (err) {
-    // Silently skip this cycle on a network hiccup; next interval will retry.
-  }
+    updateCoinListUI();
+  } catch (err) {}
+}
+
+// ★★★ প্রতি ৩ সেকেন্ডে ছোট র‍্যান্ডম পরিবর্তন ★★★
+function simulateCoinListPrices() {
+  if (listView.style.display === 'none') return;
+  Object.keys(currentPriceCache).forEach(id => {
+    const c = currentPriceCache[id];
+    const randomFactor = (Math.random() - 0.5) * 0.001;
+    c.price = c.basePrice * (1 + randomFactor);
+    c.changePercent = c.baseChangePercent + (randomFactor * 100);
+  });
+  updateCoinListUI();
+}
+
+function updateCoinListUI() {
+  coinList.forEach(coin => {
+    const c = currentPriceCache[coin.id];
+    if (!c) return;
+    const priceEl = document.getElementById('price-' + coin.id);
+    const changeEl = document.getElementById('change-' + coin.id);
+    if (!priceEl || !changeEl) return;
+    const up = c.changePercent >= 0;
+    priceEl.textContent = '$' + c.price.toLocaleString(undefined, {maximumFractionDigits: 4});
+    changeEl.textContent = (up ? '+' : '') + c.changePercent.toFixed(2) + '%';
+    changeEl.className = up ? 'change-up' : 'change-down';
+  });
 }
 
 function openChart(coin) {
@@ -661,7 +518,9 @@ function openChart(coin) {
   chartView.style.display = 'block';
   backBtn.style.display = 'block';
   pageTitle.textContent = coin.short + '/USDT';
-  document.getElementById('chart-icon').src = iconUrl(coin.icon);
+
+  const c = currentPriceCache[coin.id];
+  document.getElementById('chart-icon').src = c ? c.image : '';
   document.getElementById('chart-pair').textContent = coin.short + '/USDT';
 
   renderDurationBoxes();
@@ -671,11 +530,12 @@ function openChart(coin) {
 
   loadChart();
   clearInterval(refreshTimer);
-  refreshTimer = setInterval(loadChart, 3000);
+  refreshTimer = setInterval(loadChart, 30000); // আসল চার্ট প্রতি ৩০ সেকেন্ডে
 }
 
 backBtn.addEventListener('click', () => {
   clearInterval(refreshTimer);
+  clearInterval(simulatedTimer);
   chartView.style.display = 'none';
   listView.style.display = 'block';
   backBtn.style.display = 'none';
@@ -686,31 +546,50 @@ intervalSelect.addEventListener('change', () => {
   if (currentSymbol) loadChart();
 });
 
+// ★★★ CoinGecko থেকে OHLC ডেটা (1h / 4h / 1d) ★★★
+async function fetchCoinGeckoOHLC(coinId, interval) {
+  let days;
+  if (interval === '1h') days = 1;
+  else if (interval === '4h') days = 7;
+  else if (interval === '1d') days = 30;
+
+  const res = await fetch(`https://api.coingecko.com/api/v3/coins/${coinId}/ohlc?vs_currency=usd&days=${days}`);
+  if (!res.ok) throw new Error('HTTP ' + res.status);
+  const data = await res.json();
+  // CoinGecko OHLC: [timestamp, open, high, low, close]
+  return data.map(row => ({
+    time: row[0],
+    open: row[1],
+    high: row[2],
+    low: row[3],
+    close: row[4],
+    volume: 0 // CoinGecko OHLC-এ ভলিউম নেই, সিমুলেটেড দেখাব
+  }));
+}
+
+// ★★★ ক্যান্ডেলস্টিক আঁকা ★★★
 function drawCandles(canvas, klines) {
   const ctx = canvas.getContext('2d');
   const w = canvas.width, h = canvas.height;
   ctx.clearRect(0,0,w,h);
+  if (!klines || klines.length === 0) return;
 
-  const highs = klines.map(k => parseFloat(k[2]));
-  const lows = klines.map(k => parseFloat(k[3]));
+  const highs = klines.map(k => k.high);
+  const lows = klines.map(k => k.low);
   const max = Math.max(...highs);
   const min = Math.min(...lows);
   const range = (max - min) || 1;
   const candleWidth = w / klines.length;
 
   klines.forEach((k, i) => {
-    const open = parseFloat(k[1]);
-    const high = parseFloat(k[2]);
-    const low = parseFloat(k[3]);
-    const close = parseFloat(k[4]);
-    const up = close >= open;
+    const up = k.close >= k.open;
     const color = up ? '#0ecb81' : '#f6465d';
     const x = i * candleWidth + candleWidth/2;
 
-    const yHigh = h - ((high - min)/range) * h;
-    const yLow = h - ((low - min)/range) * h;
-    const yOpen = h - ((open - min)/range) * h;
-    const yClose = h - ((close - min)/range) * h;
+    const yHigh = h - ((k.high - min)/range) * h;
+    const yLow = h - ((k.low - min)/range) * h;
+    const yOpen = h - ((k.open - min)/range) * h;
+    const yClose = h - ((k.close - min)/range) * h;
 
     ctx.strokeStyle = color;
     ctx.beginPath();
@@ -729,15 +608,16 @@ function drawVolume(canvas, klines) {
   const ctx = canvas.getContext('2d');
   const w = canvas.width, h = canvas.height;
   ctx.clearRect(0,0,w,h);
-  const volumes = klines.map(k => parseFloat(k[5]));
+  if (!klines || klines.length === 0) return;
+
+  // ভলিউম নেই, তাই দামের ভিত্তিতে ভলিউম সিমুলেট করি
+  const volumes = klines.map(k => Math.abs(k.close - k.open) * 1000 + 500);
   const maxVol = Math.max(...volumes) || 1;
   const barWidth = w / klines.length;
 
   klines.forEach((k, i) => {
-    const open = parseFloat(k[1]);
-    const close = parseFloat(k[4]);
-    const up = close >= open;
-    const vol = parseFloat(k[5]);
+    const up = k.close >= k.open;
+    const vol = volumes[i];
     const barHeight = (vol / maxVol) * h;
     const x = i * barWidth;
     ctx.fillStyle = up ? 'rgba(14,203,129,0.6)' : 'rgba(246,70,93,0.6)';
@@ -745,60 +625,83 @@ function drawVolume(canvas, klines) {
   });
 }
 
+// ★★★ চার্ট লোড (প্রতি ৩০ সেকেন্ডে আসল, প্রতি ৩ সেকেন্ডে সিমুলেশন) ★★★
 async function loadChart() {
   if (!currentSymbol) return;
   try {
     const interval = intervalSelect.value;
-    const res = await fetch(`https://api.binance.com/api/v3/klines?symbol=${currentSymbol.symbol}&interval=${interval}&limit=48`);
-    const klines = await res.json();
+    const klines = await fetchCoinGeckoOHLC(currentSymbol.id, interval);
     if (!klines || klines.length === 0) return;
 
-    // Merge the live price into the last (currently forming) candle so the
-    // chart visibly moves between full candle refreshes, not just every 15s.
-    try {
-      const priceRes = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${currentSymbol.symbol}`);
-      const priceData = await priceRes.json();
-      const livePrice = parseFloat(priceData.price);
-      if (!isNaN(livePrice)) {
-        const last = klines[klines.length - 1];
-        last[4] = String(livePrice); // close
-        if (livePrice > parseFloat(last[2])) last[2] = String(livePrice); // high
-        if (livePrice < parseFloat(last[3])) last[3] = String(livePrice); // low
-      }
-    } catch (e) {}
+    currentKlines = klines;
 
-    drawCandles(document.getElementById('candles'), klines);
-    drawVolume(document.getElementById('volume'), klines);
+    // শেষ ক্যান্ডেলটিতে লাইভ দাম প্রয়োগ করি
+    const c = currentPriceCache[currentSymbol.id];
+    if (c) {
+      const last = currentKlines[currentKlines.length - 1];
+      last.close = c.price;
+      if (c.price > last.high) last.high = c.price;
+      if (c.price < last.low) last.low = c.price;
+    }
 
-    const last = klines[klines.length - 1];
-    const first = klines[0];
-    const openVal = parseFloat(last[1]);
-    const highVal = parseFloat(last[2]);
-    const lowVal = parseFloat(last[3]);
-    const closeVal = parseFloat(last[4]);
-    const prevClose = parseFloat(klines[klines.length - 2] ? klines[klines.length - 2][4] : first[1]);
-    const changePercent = ((closeVal - prevClose) / prevClose) * 100;
-    const up = changePercent >= 0;
+    renderChartUI();
 
-    document.getElementById('live-price').textContent = closeVal.toLocaleString(undefined,{maximumFractionDigits:4}) + ' USD';
-    const changeEl = document.getElementById('live-change');
-    changeEl.textContent = (up?'+':'') + changePercent.toFixed(2) + '%';
-    changeEl.className = up ? 'change-up' : 'change-down';
-    document.getElementById('ohlc-open').textContent = openVal.toLocaleString(undefined,{maximumFractionDigits:2});
-    document.getElementById('ohlc-high').textContent = highVal.toLocaleString(undefined,{maximumFractionDigits:2});
-    document.getElementById('ohlc-low').textContent = lowVal.toLocaleString(undefined,{maximumFractionDigits:2});
-    document.getElementById('ohlc-close').textContent = closeVal.toLocaleString(undefined,{maximumFractionDigits:2});
-
-    const startTime = new Date(first[0]);
-    const endTime = new Date(last[0]);
-    document.getElementById('time-labels').innerHTML =
-      `<span>${startTime.toLocaleString()}</span><span>${endTime.toLocaleString()}</span>`;
+    clearInterval(simulatedTimer);
+    simulatedTimer = setInterval(simulateChartTick, 3000);
   } catch (err) {
     console.error(err);
   }
 }
 
-// ---------- Trade popup helpers ----------
+// ★★★ প্রতি ৩ সেকেন্ডে ক্যান্ডেলস্টিকের শেষ ক্যান্ডেল নাড়ানো ★★★
+function simulateChartTick() {
+  if (!currentKlines || currentKlines.length === 0) return;
+
+  const last = currentKlines[currentKlines.length - 1];
+  const randomFactor = (Math.random() - 0.5) * 0.002; // ±০.১%
+  const newClose = last.close * (1 + randomFactor);
+
+  last.close = newClose;
+  if (newClose > last.high) last.high = newClose;
+  if (newClose < last.low) last.low = newClose;
+
+  // currentPriceCache-এও আপডেট করি
+  if (currentPriceCache[currentSymbol.id]) {
+    currentPriceCache[currentSymbol.id].price = newClose;
+  }
+
+  renderChartUI();
+}
+
+// ★★★ চার্ট UI রেন্ডার ★★★
+function renderChartUI() {
+  if (!currentKlines || currentKlines.length === 0) return;
+
+  drawCandles(document.getElementById('candles'), currentKlines);
+  drawVolume(document.getElementById('volume'), currentKlines);
+
+  const last = currentKlines[currentKlines.length - 1];
+  const first = currentKlines[0];
+  const prevClose = currentKlines[currentKlines.length - 2] ? currentKlines[currentKlines.length - 2].close : first.open;
+  const changePercent = ((last.close - prevClose) / prevClose) * 100;
+  const up = changePercent >= 0;
+
+  document.getElementById('live-price').textContent = last.close.toLocaleString(undefined,{maximumFractionDigits:4}) + ' USD';
+  const changeEl = document.getElementById('live-change');
+  changeEl.textContent = (up?'+':'') + changePercent.toFixed(2) + '%';
+  changeEl.className = up ? 'change-up' : 'change-down';
+  document.getElementById('ohlc-open').textContent = last.open.toLocaleString(undefined,{maximumFractionDigits:2});
+  document.getElementById('ohlc-high').textContent = last.high.toLocaleString(undefined,{maximumFractionDigits:2});
+  document.getElementById('ohlc-low').textContent = last.low.toLocaleString(undefined,{maximumFractionDigits:2});
+  document.getElementById('ohlc-close').textContent = last.close.toLocaleString(undefined,{maximumFractionDigits:2});
+
+  const startTime = new Date(first.time);
+  const endTime = new Date(last.time);
+  document.getElementById('time-labels').innerHTML =
+    `<span>${startTime.toLocaleString()}</span><span>${endTime.toLocaleString()}</span>`;
+}
+
+// ---------- Trade popup ----------
 const tmOverlay = document.getElementById('trade-modal-overlay');
 const tmTitle = document.getElementById('tm-title');
 const tmTimerCircle = document.getElementById('tm-timer-circle');
@@ -821,15 +724,9 @@ function generateOrderNumber() {
   return `O${datePart}${rand}`;
 }
 
-function openTradeModal() {
-  tmOverlay.classList.add('active');
-}
+function openTradeModal() { tmOverlay.classList.add('active'); }
+function closeTradeModal() { tmOverlay.classList.remove('active'); }
 
-function closeTradeModal() {
-  tmOverlay.classList.remove('active');
-}
-
-// "Order again" resets back to the duration-selection screen (before invest section)
 tmAgainBtn.addEventListener('click', () => {
   closeTradeModal();
   document.getElementById('invest-section').classList.remove('show');
@@ -838,11 +735,11 @@ tmAgainBtn.addEventListener('click', () => {
   document.querySelectorAll('.duration-box').forEach(b => b.classList.remove('selected'));
 });
 
-// ---------- Trade execution (resolved by real live price movement, unless an admin forces the result, or a win-rate % override is set) ----------
-async function fetchLivePrice(symbol) {
-  const res = await fetch(`https://api.binance.com/api/v3/ticker/price?symbol=${symbol}`);
+// ★★★ লাইভ দাম (CoinGecko) ★★★
+async function fetchLivePrice(coinId) {
+  const res = await fetch(`https://api.coingecko.com/api/v3/simple/price?ids=${coinId}&vs_currencies=usd`);
   const data = await res.json();
-  return parseFloat(data.price);
+  return data[coinId].usd;
 }
 
 async function placeTrade(direction) {
@@ -860,15 +757,14 @@ async function placeTrade(direction) {
   downBtn.disabled = true;
   amountInput.disabled = true;
 
-  // Deduct the stake immediately
   const balanceAfterStake = getBalance() - amount;
   setBalance(balanceAfterStake);
 
   let entryPrice;
   try {
-    entryPrice = await fetchLivePrice(currentSymbol.symbol);
+    entryPrice = currentPriceCache[currentSymbol.id]?.price || await fetchLivePrice(currentSymbol.id);
   } catch (err) {
-    setBalance(balanceAfterStake + amount); // refund
+    setBalance(balanceAfterStake + amount);
     resetTradeButtons();
     alert('Failed to fetch price, trade cancelled.');
     return;
@@ -878,13 +774,12 @@ async function placeTrade(direction) {
   const expectedReturn = amount * (duration.returnPct / 100);
   const orderNumber = generateOrderNumber();
 
-  // ---- Save the trade to Firestore so the admin panel can see / force it ----
   let tradeDocRef = null;
   try {
     tradeDocRef = await firebase.firestore().collection('trades').add({
       uid: currentUser.uid,
       userEmail: currentUser.email || '',
-      symbol: currentSymbol.symbol,
+      symbol: currentSymbol.id.toUpperCase(),
       direction: direction,
       amount: amount,
       entryPrice: entryPrice,
@@ -900,8 +795,7 @@ async function placeTrade(direction) {
     console.error('Failed to save trade record:', e);
   }
 
-  // ---- Show the pending popup card ----
-  tmTitle.textContent = currentSymbol.symbol.toLowerCase();
+  tmTitle.textContent = currentSymbol.id;
   tmTimerCircle.style.display = 'flex';
   tmResult.style.display = 'none';
   tmOpen.textContent = entryPrice.toFixed(2) + ' USD';
@@ -909,7 +803,7 @@ async function placeTrade(direction) {
   tmDirectionLabel.textContent = direction === 'up' ? 'Up:' : 'Down:';
   tmAmount.textContent = amount.toFixed(0) + ' USD';
   tmFee.textContent = fee.toFixed(2) + ' USD';
-  tmReturn.textContent = expectedReturn.toFixed(2) + 'USD';
+  tmReturn.textContent = expectedReturn.toFixed(2) + ' USD';
   tmOrderNumber.textContent = 'Order number: ' + orderNumber;
   tmAgainBtn.style.display = 'none';
   openTradeModal();
@@ -919,13 +813,10 @@ async function placeTrade(direction) {
 
   const countdownTimer = setInterval(async () => {
     remaining -= 1;
-    if (remaining >= 0) {
-      tmTimerText.textContent = remaining + 's';
-    }
-    // refresh the live "Last price" every couple of seconds
+    if (remaining >= 0) tmTimerText.textContent = remaining + 's';
     if (remaining > 0 && remaining % 2 === 0) {
       try {
-        const p = await fetchLivePrice(currentSymbol.symbol);
+        const p = currentPriceCache[currentSymbol.id]?.price || await fetchLivePrice(currentSymbol.id);
         tmLast.textContent = p.toFixed(2) + ' USD';
       } catch (e) {}
     }
@@ -935,12 +826,10 @@ async function placeTrade(direction) {
     clearInterval(countdownTimer);
     let exitPrice;
     try {
-      exitPrice = await fetchLivePrice(currentSymbol.symbol);
+      exitPrice = currentPriceCache[currentSymbol.id]?.price || await fetchLivePrice(currentSymbol.id);
     } catch (err) {
       setBalance(balanceAfterStake + amount);
-      if (tradeDocRef) {
-        tradeDocRef.update({ status: 'error', result: 'refunded' }).catch(()=>{});
-      }
+      if (tradeDocRef) tradeDocRef.update({ status: 'error', result: 'refunded' }).catch(()=>{});
       tmTimerCircle.style.display = 'none';
       tmResult.style.display = 'block';
       tmResult.style.color = '#f6465d';
@@ -950,7 +839,6 @@ async function placeTrade(direction) {
       return;
     }
 
-    // ---- Check whether an admin has forced this trade's outcome ----
     let forcedResult = null;
     if (tradeDocRef) {
       try {
@@ -959,7 +847,6 @@ async function placeTrade(direction) {
       } catch (e) {}
     }
 
-    // ---- Check whether this user has a Win Rate % override set in the admin panel ----
     let winRatePercent = null;
     try {
       const userSnap = await firebase.firestore().collection('users').doc(currentUser.uid).get();
@@ -971,17 +858,10 @@ async function placeTrade(direction) {
     const wentUp = exitPrice > entryPrice;
     const wentDown = exitPrice < entryPrice;
     let won, tie;
-    if (forcedResult === 'win') {
-      won = true; tie = false;
-    } else if (forcedResult === 'lose') {
-      won = false; tie = false;
-    } else if (winRatePercent !== null) {
-      won = (Math.random() * 100) < winRatePercent;
-      tie = false;
-    } else {
-      won = (direction === 'up' && wentUp) || (direction === 'down' && wentDown);
-      tie = exitPrice === entryPrice;
-    }
+    if (forcedResult === 'win') { won = true; tie = false; }
+    else if (forcedResult === 'lose') { won = false; tie = false; }
+    else if (winRatePercent !== null) { won = (Math.random() * 100) < winRatePercent; tie = false; }
+    else { won = (direction === 'up' && wentUp) || (direction === 'down' && wentDown); tie = exitPrice === entryPrice; }
 
     tmLast.textContent = exitPrice.toFixed(2) + ' USD';
     tmTimerCircle.style.display = 'none';
